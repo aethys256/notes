@@ -57,8 +57,10 @@ brew install pyenv
 brew install php@5.6 php@7.0 php@7.1 php@7.2
 brew link --overwrite php # Will link the latest php, i.e. 7.2 here
 
-# Java8 / JDK 1.8
-brew cask install java8 # It'll probably ask for the admin password
+## Requires password
+# Java + Java8 / JDK 1.8
+brew cask install java
+brew cask install java8
 
 ```
 ```sh
@@ -98,7 +100,7 @@ alias pyenv2-stable-list="pyenv-stable-list | grep '^2.'"
 alias pyenv2-stable-latest="pyenv2-stable-list | tail -1"
 alias pyenv2-stable-previous="pyenv2-stable-list | tail -2 | head -1"
 
-## Java
+## Java 1.8
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
 ## Android
@@ -115,6 +117,8 @@ esac
 ## Node (NVM)
 export NVM_DIR="${HOME}/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
+export NVM_VERSION_CURRENT_NODE=$(nvm version node)
+export NVM_VERSION_CURRENT_LTS=$(nvm version lts/*)
 
 ## Ruby (RVM)
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
@@ -133,7 +137,7 @@ It's time for a `reboot` to be safe.
 ```sh
 # Install Node & Node LTS
 nvm install node && nvm use node && npm update -g
-nvm install lts/* && nvm use lts/* && npm update -g && nvm alias default lts/*
+nvm install --lts && nvm use lts/* && npm update -g && nvm alias default lts/*
 nvm list && echo "nvm: $(nvm --version)" && echo "node: $(node --version)" && echo "npm: $(npm --version)"
 
 # Upgrade RVM and Ruby + install Bundler
@@ -164,6 +168,7 @@ brew cask install google-chrome firefox opera # Browsers
 brew cask install keepassxc # Password manager
 brew cask install visual-studio-code jetbrains-toolbox android-studio # IDEs
 brew cask install sourcetree # Git GUI client
+brew cask install postman # ADE
 brew cask install filezilla cyberduck # File transfer
 brew cask install thunderbird slack skype # Messaging
 brew cask install vlc # Multimedia player

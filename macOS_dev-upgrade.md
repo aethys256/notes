@@ -16,8 +16,12 @@ source ~/.profile
 
 brew update && brew upgrade && brew cask upgrade && brew cask cleanup && brew cleanup && brew prune
 
-nvm install node --reinstall-packages-from=node && nvm use node && npm i npm -g && npm update -g
-nvm install lts/* --reinstall-packages-from='lts/*' && nvm use lts/* && npm i npm -g && npm update -g && nvm alias default lts/*
+nvm install node --reinstall-packages-from=${NVM_VERSION_CURRENT_NODE}
+nvm use node && npm i npm -g && npm update -g
+nvm install lts/* --reinstall-packages-from=${NVM_VERSION_CURRENT_LTS}
+nvm use lts/* && npm i npm -g && npm update -g && nvm alias default lts/*
+export NVM_VERSION_CURRENT_NODE=$(nvm version node)
+export NVM_VERSION_CURRENT_LTS=$(nvm version lts/*)
 
 rvm get master && rvm reload && yes | rvm upgrade default && rvm use default && gem update
 
@@ -60,8 +64,12 @@ brew --version && brew cask --version
 
 ### Upgrade Node & Node LTS w/ npm
 ```sh
-nvm install node --reinstall-packages-from=node && nvm use node && npm update -g
-nvm install lts/* --reinstall-packages-from='lts/*' && nvm use lts/* && npm update -g && nvm alias default lts/*
+nvm install node --reinstall-packages-from=${NVM_VERSION_CURRENT_NODE}
+nvm use node && npm i npm -g && npm update -g
+nvm install lts/* --reinstall-packages-from=${NVM_VERSION_CURRENT_LTS}
+nvm use lts/* && npm i npm -g && npm update -g && nvm alias default lts/*
+export NVM_VERSION_CURRENT_NODE=$(nvm version node)
+export NVM_VERSION_CURRENT_LTS=$(nvm version lts/*)
 nvm list && echo "nvm: $(nvm --version)" && echo "node: $(node --version)" && echo "npm: $(npm --version)"
 
 ```
