@@ -34,6 +34,20 @@ ssh-add ~/.ssh/PRIVATE-KEY-FILE &> /dev/null
 
 ## macOS
 
+### SimC GUI + CLI
+```sh
+# Clean
+git clean -xdf
+
+# CLI only
+make -C engine -j
+
+# CLI + GUI
+qmake simulationcraft.pro
+make -j
+
+```
+
 ### Keyboard reset
 Sometimes macOS keyboard is confused and there is no other choice than deleting `/Library/Preferences/com.apple.keyboardtype.plist` file.
 See: http://eng.raneri.it/blog/2009/01/17/how-to-reset-the-mac-keyboard/
