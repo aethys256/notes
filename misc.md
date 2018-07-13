@@ -43,3 +43,32 @@ The easiest way is to cat all of them into a single zip, like this:
 ```sh
 cat /path/to/archive-parts/my-archive.zip.001 /path/to/archive-parts/my-archive.zip.002 /path/to/archive-parts/my-archive.zip.003 > my-archive.zip
 ```
+
+### Razer Synapse clean reinstall
+Step 1: Open the Application Finder. Click on Utilities and launch Terminal. In your terminal: stop and remove launch agents by typing these commands one at a time.
+```sh
+launchctl remove com.razer.rzupdater
+
+launchctl remove com.razerzone.rzdeviceengine
+
+sudo rm /Library/LaunchAgents/com.razer.rzupdater.plist
+
+sudo rm /Library/LaunchAgents/com.razerzone.rzdeviceengine.plist
+
+```
+Step 2: Remove HID kernel extension
+```
+sudo rm -Rf /System/Library/Extensions/RazerHid.kext
+
+```
+Step 3: Manually delete Razer Synapse app from Applications in Finder
+
+Step 4: Delete Razer files from "Application Support" folders:
+```
+sudo rm -rf /Library/Application\ Support/Razer/
+
+```
+
+Step 5: Restart your Mac.
+
+Step 6: Reinstall Synapse. http://drivers.razersupport.com//index.php?_m=downloads&_a=viewdownload&downloaditemid=2626&nav=0,343,239
