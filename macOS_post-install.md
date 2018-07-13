@@ -87,19 +87,6 @@ case ":$PATH:" in
   *) export PATH="$(brew --prefix)/sbin:${PATH}" ;;
 esac
 
-## Python (PyEnv)
-# Add to the PATH: "${HOME}/.pyenv/shims"
-case ":$PATH:" in
-  *:"${HOME}/.pyenv/shims":*) ;;
-  *) eval "$(pyenv init -)" ;;
-esac
-alias pyenv-stable-list="pyenv install --list | sed 's/^  //' | grep '^\d' | grep --invert-match 'dev\|a\|b\|rc'"
-alias pyenv-stable-latest="pyenv-stable-list | tail -1"
-alias pyenv-stable-previous="pyenv-stable-list | tail -2 | head -1"
-alias pyenv2-stable-list="pyenv-stable-list | grep '^2.'"
-alias pyenv2-stable-latest="pyenv2-stable-list | tail -1"
-alias pyenv2-stable-previous="pyenv2-stable-list | tail -2 | head -1"
-
 ## Java 1.8
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
@@ -113,6 +100,26 @@ case ":$PATH:" in
   *:"${ANDROID_HOME}/platform-tools":*) ;;
   *) export PATH="${PATH}:${ANDROID_HOME}/platform-tools" ;;
 esac
+
+## QT
+case ":$PATH:" in
+  *:"/usr/local/opt/qt/bin":*) ;;
+  *) export PATH="${PATH}:/usr/local/opt/qt/bin" ;;
+esac
+
+## Python (PyEnv)
+# Add to the PATH: "${HOME}/.pyenv/shims"
+case ":$PATH:" in
+  *:"${HOME}/.pyenv/shims":*) ;;
+  *) eval "$(pyenv init -)" ;;
+esac
+alias pyenv-stable-list="pyenv install --list | sed 's/^  //' | grep '^\d' | grep --invert-match 'dev\|a\|b\|rc'"
+alias pyenv-stable-latest="pyenv-stable-list | tail -1"
+alias pyenv-stable-previous="pyenv-stable-list | tail -2 | head -1"
+alias pyenv2-stable-list="pyenv-stable-list | grep '^2.'"
+alias pyenv2-stable-latest="pyenv2-stable-list | tail -1"
+alias pyenv2-stable-previous="pyenv2-stable-list | tail -2 | head -1"
+
 
 ## Node (NVM)
 export NVM_DIR="${HOME}/.nvm"
@@ -159,6 +166,7 @@ brew install graphicsmagick # Useful for image resizing, example: ionic-resource
 brew install gradle # Android compilation
 brew install heroku/brew/heroku # Heroku CLI
 brew install mongo # MongoDB
+brew install qt # QT
 
 ```
 
@@ -181,6 +189,7 @@ brew cask install spectacle # Window management app, need to be added in Accessi
 brew cask install scroll-reverser # Reverse mouse while keeping natural for trackpad
 
 ## Requires password
+brew cask install dotnet-sdk # .NET SDK
 brew cask install xquartz inkscape # Vector image edition
 brew cask install adobe-air flash-npapi flash-ppapi # Adobe Air & Flash Player NPAPI (Safari & Firefox) & Flash Player PPAPI (Chromium & Opera)
 brew cask install teamviewer # Screen sharing
