@@ -34,7 +34,7 @@ ssh-add ~/.ssh/PRIVATE-KEY-FILE &> /dev/null
 
 ## macOS
 
-### SimC GUI + CLI
+### SimC building
 ```sh
 # Clean
 git clean -xdf

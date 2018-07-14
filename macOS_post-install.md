@@ -181,7 +181,7 @@ brew cask install filezilla cyberduck # File transfer
 brew cask install thunderbird slack skype # Messaging
 brew cask install vlc # Multimedia player
 brew cask install the-unarchiver # Archive utility
-brew cask install istat-menus # Hardware monitoring
+brew cask install istat-menus # Hardware monitoring, free alternative: yujitach-menumeters
 brew cask install db-browser-for-sqlite # Popular browser for SQLite
 brew cask install onyx # System utility
 brew cask install symboliclinker # Symbolic link in context menu
