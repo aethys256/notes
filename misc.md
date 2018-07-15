@@ -36,15 +36,16 @@ ssh-add ~/.ssh/PRIVATE-KEY-FILE &> /dev/null
 
 ### SimC building
 ```sh
-# Clean
+# Clean & Pull
 git clean -xdf
+git pull
 
 # CLI only
-make -C engine -j
+make -C engine -j 16 LTO=1 optimized
 
 # CLI + GUI
 qmake simulationcraft.pro
-make -j
+make -j 16 LTO=1 optimized
 
 ```
 
