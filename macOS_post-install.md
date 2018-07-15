@@ -166,7 +166,7 @@ brew install graphicsmagick # Useful for image resizing, example: ionic-resource
 brew install gradle # Android compilation
 brew install heroku/brew/heroku # Heroku CLI
 brew install mongo # MongoDB
-brew install qt # QT
+brew install qt openssl # QT & OpenSSL (used to compile SimC)
 
 ```
 
