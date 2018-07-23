@@ -156,10 +156,14 @@ yes n | pyenv install $(pyenv-stable-latest)
 yes n | pyenv install $(pyenv2-stable-latest)
 pyenv global $(pyenv-stable-latest) $(pyenv2-stable-latest)
 pyenv rehash
-pip install --upgrade pip
 pip2 install --upgrade pip
+pip3 install --upgrade pip
 pyenv rehash
-pyenv versions && pyenv --version && python --version && pip --version && python2 --version && pip2 --version
+pyenv versions && pyenv --version && python3 --version && pip3 --version && python2 --version && pip2 --version
+
+# Install Python bitarray
+pip2 install bitarray && pip3 install bitarray
+pip2 install six && pip3 install six
 
 # Others
 brew install graphicsmagick # Useful for image resizing, example: ionic-resources
@@ -167,6 +171,7 @@ brew install gradle # Android compilation
 brew install heroku/brew/heroku # Heroku CLI
 brew install mongo # MongoDB
 brew install qt openssl # QT & OpenSSL (used to compile SimC)
+brew install phantomjs
 
 ```
 
