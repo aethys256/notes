@@ -162,8 +162,9 @@ pyenv rehash
 pyenv versions && pyenv --version && python3 --version && pip3 --version && python2 --version && pip2 --version
 
 # Install Python bitarray
-pip2 install bitarray && pip3 install bitarray
-pip2 install six && pip3 install six
+pip3 install bitarray pefile # dbc_extract
+pip3 install six # hero-dbc
+pip3 install setuptools # hero-rotation-generator
 
 # Others
 brew install graphicsmagick # Useful for image resizing, example: ionic-resources
