@@ -157,14 +157,14 @@ yes n | pyenv install $(pyenv2-stable-latest)
 pyenv global $(pyenv-stable-latest) $(pyenv2-stable-latest)
 pyenv rehash
 pip2 install --upgrade pip
-pip3 install --upgrade pip
+pip install --upgrade pip
 pyenv rehash
-pyenv versions && pyenv --version && python3 --version && pip3 --version && python2 --version && pip2 --version
+pyenv versions && pyenv --version && python --version && pip --version && python2 --version && pip2 --version
 
 # Install Python bitarray
-pip3 install bitarray pefile # dbc_extract
-pip3 install six # hero-dbc
-pip3 install setuptools # hero-rotation-generator
+pip install bitarray pefile # dbc_extract
+pip install SLPP-23 # hero-dbc
+pip install setuptools # hero-rotation-generator
 
 # Others
 brew install graphicsmagick # Useful for image resizing, example: ionic-resources

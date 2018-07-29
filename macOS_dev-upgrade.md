@@ -32,14 +32,14 @@ yes | pyenv uninstall $(pyenv-stable-previous)
 yes | pyenv uninstall $(pyenv2-stable-previous)
 pyenv rehash
 pip2 install --upgrade pip
-pip3 install --upgrade pip
+pip install --upgrade pip
 pyenv rehash
 
 echo -e '\n'
 echo '------ Homebrew ------' && brew --version && brew cask --version && echo ''
 echo '------ NVM ------' && nvm list && echo "nvm: $(nvm --version)" && echo "node: $(node --version)" && echo "npm: $(npm --version)" && echo ''
 echo '------ RVM ------' && rvm list && rvm --version && ruby --version && bundler --version && echo ''
-echo '------ PyEnv ------' && pyenv versions && pyenv --version && python3 --version && pip3 --version && python2 --version && pip2 --version && echo ''
+echo '------ PyEnv ------' && pyenv versions && pyenv --version && python --version && pip --version && python2 --version && pip2 --version && echo ''
 EOF
 chmod +x ~/aio-upgrade.sh
 
@@ -100,8 +100,8 @@ yes | pyenv uninstall $(pyenv-stable-previous)
 yes | pyenv uninstall $(pyenv2-stable-previous)
 pyenv rehash
 pip2 install --upgrade pip
-pip3 install --upgrade pip
+pip install --upgrade pip
 pyenv rehash
-pyenv versions && pyenv --version && python3 --version && pip3 --version && python2 --version && pip2 --version
+pyenv versions && pyenv --version && python --version && pip --version && python2 --version && pip2 --version
 
 ```
