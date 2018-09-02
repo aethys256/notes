@@ -30,8 +30,8 @@ brew doctor
 
 ```
 ```sh
-brew tap caskroom/cask
-brew tap caskroom/versions
+brew tap homebrew/cask
+brew tap homebrew/cask-versions
 brew update && brew upgrade && brew cask upgrade && brew cleanup && brew prune
 brew --version && brew cask --version
 
