@@ -14,7 +14,7 @@ cat << 'EOF' > ~/aio-upgrade.sh
 shopt -s expand_aliases
 source ~/.profile
 
-brew update && brew upgrade && brew cask upgrade && brew cask cleanup && brew cleanup && brew prune
+brew update && brew upgrade && brew cask upgrade && brew cleanup && brew prune
 
 nvm install node --reinstall-packages-from=${NVM_VERSION_CURRENT_NODE}
 nvm use node && npm i npm -g && npm update -g
@@ -55,7 +55,7 @@ chmod +x ~/aio-upgrade.sh
 
 ### Upgrade brew & casks
 ```sh
-brew update && brew upgrade && brew cask upgrade && brew cask cleanup && brew cleanup && brew prune
+brew update && brew upgrade && brew cask upgrade && brew cleanup && brew prune
 brew --version && brew cask --version
 
 ```

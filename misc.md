@@ -49,6 +49,11 @@ make -j 16 LTO=1 optimized
 
 ```
 
+### Force enable TRIM
+```sh
+sudo trimforce enable
+```
+
 ### Keyboard reset
 Sometimes macOS keyboard is confused and there is no other choice than deleting `/Library/Preferences/com.apple.keyboardtype.plist` file.
 See: http://eng.raneri.it/blog/2009/01/17/how-to-reset-the-mac-keyboard/

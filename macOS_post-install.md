@@ -32,7 +32,7 @@ brew doctor
 ```sh
 brew tap caskroom/cask
 brew tap caskroom/versions
-brew update && brew upgrade && brew cask upgrade && brew cask cleanup && brew cleanup && brew prune
+brew update && brew upgrade && brew cask upgrade && brew cleanup && brew prune
 brew --version && brew cask --version
 
 ```
@@ -161,18 +161,19 @@ pip install --upgrade pip
 pyenv rehash
 pyenv versions && pyenv --version && python --version && pip --version && python2 --version && pip2 --version
 
-# Install Python bitarray
-pip install bitarray pefile # dbc_extract
+# Install Python dependencies
+pip install bitarray pefile # simc/dbc_extract
 pip install SLPP-23 # hero-dbc
 pip install setuptools # hero-rotation-generator
 
 # Others
+brew install libpng # Used for any 3rd party postprocess lib (like webpack image loaders/plugins)
 brew install graphicsmagick # Useful for image resizing, example: ionic-resources
 brew install gradle # Android compilation
 brew install heroku/brew/heroku # Heroku CLI
 brew install mongo # MongoDB
 brew install qt openssl # QT & OpenSSL (used to compile SimC)
-brew install phantomjs
+brew install phantomjs # Anytime you need to render HTML outside of a browser (like to generate a PDF)
 
 ```
 
@@ -187,8 +188,6 @@ brew cask install filezilla cyberduck # File transfer
 brew cask install thunderbird slack skype # Messaging
 brew cask install vlc # Multimedia player
 brew cask install the-unarchiver # Archive utility
-brew cask install istat-menus # Hardware monitoring, free alternative: yujitach-menumeters
-brew cask install db-browser-for-sqlite # Popular browser for SQLite
 brew cask install onyx # System utility
 brew cask install symboliclinker # Symbolic link in context menu
 brew cask install spectacle # Window management app, need to be added in Accessibility settings
@@ -198,7 +197,7 @@ brew cask install scroll-reverser # Reverse mouse while keeping natural for trac
 brew cask install dotnet-sdk # .NET SDK
 brew cask install xquartz inkscape # Vector image edition
 brew cask install adobe-air flash-npapi flash-ppapi # Adobe Air & Flash Player NPAPI (Safari & Firefox) & Flash Player PPAPI (Chromium & Opera)
-brew cask install teamviewer # Screen sharing
+brew cask install teamviewer chrome-remote-desktop-host # Screen sharing
 
 ```
 
@@ -234,6 +233,13 @@ brew cask install clover-configurator # EFI Bootloader configurator
 
 ```
 
+### Others
+```sh
+brew cask install istat-menus # Hardware monitoring, free alternative: yujitach-menumeters
+brew cask install db-browser-for-sqlite # Popular browser for SQLite
+
+```
+
 ### JetBrains Intellij IDEA plugins
 ```
 .env files support
@@ -242,16 +248,22 @@ Apache config (.htaccess) support
 BashSupport
 CSV Plugin
 Docker integration
+EJS
 File Watchers
+Handlebars/Mustache
 Ideolog
 Ini4Idea
+JS GraphQL
+Kotlin
 LiveEdit
 Lua
 Mongo Plugin
 NodeJS
 PHP
+Prettier
 Python
 Ruby
 String Manipulation
+Styled Components
 Vue.js
 ```
