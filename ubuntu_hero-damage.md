@@ -75,7 +75,7 @@ cd ${BASE_DIR}/SimcScripts/
 git pull
 bundle install
 cp ${BASE_DIR}/SimcConfig-WSL.yml ${BASE_DIR}/SimcScripts/SimcConfig.yml
-bundle exec ruby Run.rb
+ruby Run.rb
 EOF
 chmod +x /mnt/d/github/ssrun-wsl.sh
 
@@ -117,7 +117,8 @@ cd ${BASE_DIR}/SimcScripts/
 git pull
 bundle install
 cp ${BASE_DIR}/SimcConfig-macOS.yml ${BASE_DIR}/SimcScripts/SimcConfig.yml
-bundle exec ruby Run.rb
+osascript -e "tell application \"Terminal\" to do script \"cd ${BASE_DIR}/SimcScripts && ruby Run.rb -r\""
+ruby Run.rb
 EOF
 chmod +x /Volumes/DATA/github/ssrun-macos.sh
 
