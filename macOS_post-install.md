@@ -173,6 +173,7 @@ brew install gradle # Android compilation
 brew install heroku/brew/heroku # Heroku CLI
 brew install mongo # MongoDB
 brew install qt openssl # QT & OpenSSL (used to compile SimC)
+brew install clang-format # Clang format (used to format SimC)
 brew install phantomjs # Anytime you need to render HTML outside of a browser (like to generate a PDF)
 
 ```
