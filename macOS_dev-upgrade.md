@@ -35,8 +35,12 @@ pip2 install --upgrade pip
 pip install --upgrade pip
 pyenv rehash
 
+pip install --upgrade bitarray pefile # simc/dbc_extract
+pip install --upgrade SLPP-23 # hero-dbc
+pip install --upgrade setuptools # hero-rotation-generator
+
 echo -e '\n'
-echo '------ Homebrew ------' && brew --version && brew cask --version && echo ''
+echo '------ Homebrew ------' && brew --version && echo ''
 echo '------ NVM ------' && nvm list && echo "nvm: $(nvm --version)" && echo "node: $(node --version)" && echo "npm: $(npm --version)" && echo ''
 echo '------ RVM ------' && rvm list && rvm --version && ruby --version && bundler --version && echo ''
 echo '------ PyEnv ------' && pyenv versions && pyenv --version && python --version && pip --version && python2 --version && pip2 --version && echo ''
@@ -56,7 +60,7 @@ chmod +x ~/aio-upgrade.sh
 ### Upgrade brew & casks
 ```sh
 brew update && brew upgrade && brew cask upgrade && brew cleanup && brew prune
-brew --version && brew cask --version
+brew --version
 
 ```
 
@@ -103,5 +107,9 @@ pip2 install --upgrade pip
 pip install --upgrade pip
 pyenv rehash
 pyenv versions && pyenv --version && python --version && pip --version && python2 --version && pip2 --version
+
+pip install --upgrade bitarray pefile # simc/dbc_extract
+pip install --upgrade SLPP-23 # hero-dbc
+pip install --upgrade setuptools # hero-rotation-generator
 
 ```
