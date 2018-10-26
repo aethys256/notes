@@ -10,13 +10,21 @@ Refer to `macOS_defaults` instructions.
 ## Dev Environment
 Here is how I setup my development environment.
 
-### Install XCode
+### Install XCode / XCode Command Line Tools
 I do use XCode that's why, if you use it just for the CLI, homebrew will install it for you.
 Once it's installed, `reboot` then do:
 ```sh
 sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 
 sudo xcodebuild -license accept
+
+```
+
+If you want to install the Command Line Tools yourself, you can also do it using this:
+```sh
+xcode-select --install
+
+sudo xcode-select --switch /Library/Developer/CommandLineTools
 
 ```
 
@@ -33,14 +41,14 @@ brew doctor
 brew tap homebrew/cask
 brew tap homebrew/cask-versions
 brew update && brew upgrade && brew cask upgrade && brew cleanup && brew prune
-brew --version && brew cask --version
+brew --version
 
 ```
 
 ### Basics + NVM + RVM + Java8 + Misc
 ```sh
 # Basics
-brew install git git-flow git-lfs gnupg
+brew install git git-flow git-lfs gnupg openssl zlib
 
 # Node - NVM
 brew install nvm
@@ -87,6 +95,12 @@ case ":$PATH:" in
   *) export PATH="$(brew --prefix)/sbin:${PATH}" ;;
 esac
 
+## Local binaries
+case ":$PATH:" in
+  *:"~/.local/bin":*) ;;
+  *) export PATH="~/.local/bin:${PATH}" ;;
+esac
+
 ## Java 1.8
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
@@ -119,7 +133,6 @@ alias pyenv-stable-previous="pyenv-stable-list | tail -2 | head -1"
 alias pyenv2-stable-list="pyenv-stable-list | grep '^2.'"
 alias pyenv2-stable-latest="pyenv2-stable-list | tail -1"
 alias pyenv2-stable-previous="pyenv2-stable-list | tail -2 | head -1"
-
 
 ## Node (NVM)
 export NVM_DIR="${HOME}/.nvm"
@@ -171,10 +184,10 @@ brew install libpng # Used for any 3rd party postprocess lib (like webpack image
 brew install graphicsmagick # Useful for image resizing, example: ionic-resources
 brew install gradle # Android compilation
 brew install heroku/brew/heroku # Heroku CLI
+brew install awsebcli # AWS ElasticBeanstalk CLI
 brew install mongo # MongoDB
 brew install qt openssl # QT & OpenSSL (used to compile SimC)
 brew install clang-format # Clang format (used to format SimC)
-brew install phantomjs # Anytime you need to render HTML outside of a browser (like to generate a PDF)
 
 ```
 
@@ -196,7 +209,6 @@ brew cask install scroll-reverser # Reverse mouse while keeping natural for trac
 
 ## Requires password
 brew cask install dotnet-sdk # .NET SDK
-brew cask install xquartz inkscape # Vector image edition
 brew cask install adobe-air flash-npapi flash-ppapi # Adobe Air & Flash Player NPAPI (Safari & Firefox) & Flash Player PPAPI (Chromium & Opera)
 brew cask install teamviewer chrome-remote-desktop-host # Screen sharing
 
@@ -204,7 +216,7 @@ brew cask install teamviewer chrome-remote-desktop-host # Screen sharing
 
 ### Personal only
 ```sh
-brew cask install league-of-legends twitch discord teamspeak-client # Gaming
+brew cask install twitch discord teamspeak-client # Gaming
 brew cask install transmission # Torrent file transfer
 brew cask install google-backup-and-sync cryptomator # File synchronization
 
@@ -217,6 +229,7 @@ Manually:
 ```
 Audacity
 Battle.net
+League of Legends
 HomeBank
 OpenVPN
 Skyfonts
@@ -238,6 +251,9 @@ brew cask install clover-configurator # EFI Bootloader configurator
 ```sh
 brew cask install istat-menus # Hardware monitoring, free alternative: yujitach-menumeters
 brew cask install db-browser-for-sqlite # Popular browser for SQLite
+
+## Requires password
+brew cask install xquartz inkscape # Vector image edition
 
 ```
 
