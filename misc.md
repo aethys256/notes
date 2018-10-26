@@ -2,21 +2,38 @@
 
 ## Commands
 
+### AWS
+#### ElasticBeanstalk: Use 'npm run ...' during SSH session
+```sh
+sudo su
+export PATH=$PATH:`ls -td /opt/elasticbeanstalk/node-install/node-* | head -1`/bin
+/opt/elasticbeanstalk/bin/get-config environment | python -c "import json,sys; obj=json.load(sys.stdin); f = open('/tmp/eb_env', 'w'); f.write('\n'.join(map(lambda x: 'export ' + x[0] + '=' + x[1], obj.iteritems())))"
+source /tmp/eb_env
+
+# npm run ...
+
+rm -f /tmp/eb_env
+
+```
+
 ### Heroku
 #### Login / Swap user
 ```sh
 heroku login
+
 ```
 
 ### Symbolic link
 ```sh
 ln -s /path/to/original/ /path/to/link
+
 ```
 
 ### Diff
 
 ```sh
 diff --unified=3 file1.ext file2.ext > file.diff
+
 ```
 Where the number after `--unified=` is the number of lines showing the context. To fully output the file, put a big number (> number of lines).
 
@@ -25,11 +42,21 @@ Where the number after `--unified=` is the number of lines showing the context. 
 #### Generate
 ```sh
 ssh-keygen -t rsa -b 4096 -C "comment, usually mail address" -f "filename, usually username-Platform"
+
 ```
 
 #### Add
 ```sh
 ssh-add ~/.ssh/PRIVATE-KEY-FILE &> /dev/null
+
+```
+
+### Python
+
+#### Uninstall all pip packages
+```sh
+pip freeze | xargs pip uninstall -y
+
 ```
 
 ## macOS
@@ -41,17 +68,26 @@ git clean -xdf
 git pull
 
 # CLI only
-make -C engine -j 16 LTO=1 optimized
+make -C engine -j $(expr $(sysctl -n hw.ncpu) / 2) LTO=1 optimized
 
 # CLI + GUI
 qmake simulationcraft.pro
-make -j 16 LTO=1 optimized
+make -j $(expr $(sysctl -n hw.ncpu) / 2) LTO=1
+
+```
+
+### SimC debugging
+```sh
+make -C engine -j $(expr $(sysctl -n hw.ncpu) / 2) debug
+lldb ./engine/simc XXX.simc
+run
 
 ```
 
 ### Force enable TRIM
 ```sh
 sudo trimforce enable
+
 ```
 
 ### Keyboard reset
@@ -62,6 +98,13 @@ See: http://eng.raneri.it/blog/2009/01/17/how-to-reset-the-mac-keyboard/
 The easiest way is to cat all of them into a single zip, like this:
 ```sh
 cat /path/to/archive-parts/my-archive.zip.001 /path/to/archive-parts/my-archive.zip.002 /path/to/archive-parts/my-archive.zip.003 > my-archive.zip
+
+```
+
+### Delete a part of a zip (mostly used to remove the annoying __MACOSX folder)
+```sh
+zip -d filename.zip __MACOSX/\*
+
 ```
 
 ### Razer Synapse clean reinstall
@@ -92,3 +135,10 @@ sudo rm -rf /Library/Application\ Support/Razer/
 Step 5: Restart your Mac.
 
 Step 6: Reinstall Synapse. http://drivers.razersupport.com//index.php?_m=downloads&_a=viewdownload&downloaditemid=2626&nav=0,343,239
+
+### Manually install XCode Command Line Tools missing headers in macOS 10.14+
+See: https://github.com/pyenv/pyenv/issues/1219
+```sh
+sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /
+
+```
