@@ -112,7 +112,7 @@ cat /path/to/archive-parts/my-archive.zip.001 /path/to/archive-parts/my-archive.
 
 ### Delete a part of a zip (mostly used to remove the annoying __MACOSX folder)
 ```sh
-zip -d filename.zip __MACOSX/\*
+zip -d Archive.zip __MACOSX/\*
 
 ```
 

@@ -182,12 +182,13 @@ pip install setuptools # hero-rotation-generator
 # Others
 brew install libpng # Used for any 3rd party postprocess lib (like webpack image loaders/plugins)
 brew install graphicsmagick # Useful for image resizing, example: ionic-resources
-brew install gradle # Android compilation
-brew install heroku/brew/heroku # Heroku CLI
-brew install awsebcli # AWS ElasticBeanstalk CLI
+brew install gradle # Used to compile Android apps
 brew install mongo # MongoDB
 brew install qt openssl # QT & OpenSSL (used to compile SimC)
 brew install clang-format # Clang format (used to format SimC)
+brew install awscli # AWS CLI
+brew install awsebcli # AWS ElasticBeanstalk CLI
+brew install heroku/brew/heroku # Heroku CLI
 
 ```
 
