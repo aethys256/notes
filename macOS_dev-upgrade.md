@@ -23,7 +23,7 @@ nvm use lts/* && npm i npm -g && npm update -g && nvm alias default lts/*
 export NVM_VERSION_CURRENT_NODE=$(nvm version node)
 export NVM_VERSION_CURRENT_LTS=$(nvm version lts/*)
 
-rvm get master && rvm reload && yes | rvm upgrade default && rvm use default && gem update
+rvm get master && rvm reload && rvm reinstall default && yes | rvm upgrade default && rvm use default && gem update
 
 yes n | pyenv install $(pyenv-stable-latest)
 yes n | pyenv install $(pyenv2-stable-latest)
@@ -81,8 +81,9 @@ nvm list && echo "nvm: $(nvm --version)" && echo "node: $(node --version)" && ec
 ## Ruby
 
 ### Upgrade RVM & Ruby & Gems
+Note: We reinstall ruby because brew can break it during his update, otherwise it's not needed to reinstall.
 ```sh
-rvm get master && rvm reload && yes | rvm upgrade default && rvm use default && gem update
+rvm get master && rvm reload && rvm reinstall default && yes | rvm upgrade default && rvm use default && gem update
 rvm list && rvm --version && ruby --version && bundler --version
 
 ```
