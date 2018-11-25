@@ -83,10 +83,8 @@ rm ~/.bash_profile; rm ~/.bashrc; rm ~/.mkshrc; rm ~/.profile; rm ~/.zlogin; rm 
 #   *) PATH_IS_NOT_IN ;;
 # esac
 cat << 'EOF' > ~/.profile
-# Register the SSH private keys as identities
-ssh-add ~/.ssh/aethys-Bitbucket &> /dev/null
-ssh-add ~/.ssh/aethys256-GitHub &> /dev/null
-ssh-add ~/.ssh/MySG-QuentinG-Bitbucket &> /dev/null
+# Register the SSH private keys from ~/.ssh as identities
+grep -slR "PRIVATE" ~/.ssh | xargs ssh-add
 
 ## Homebrew
 # Add to the PATH: "$(brew --prefix)/sbin"
