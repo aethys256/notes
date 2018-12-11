@@ -84,7 +84,7 @@ rm ~/.bash_profile; rm ~/.bashrc; rm ~/.mkshrc; rm ~/.profile; rm ~/.zlogin; rm 
 # esac
 cat << 'EOF' > ~/.profile
 # Register the SSH private keys from ~/.ssh as identities
-grep -slR "PRIVATE" ~/.ssh | xargs ssh-add
+grep -slR "PRIVATE" ~/.ssh | xargs ssh-add &> /dev/null
 
 ## Homebrew
 # Add to the PATH: "$(brew --prefix)/sbin"
@@ -173,9 +173,10 @@ pyenv rehash
 pyenv versions && pyenv --version && python --version && pip --version && python2 --version && pip2 --version
 
 # Install Python dependencies
-pip install bitarray pefile # simc/dbc_extract
+pip install bitarray pefile requests # simc/casc_extract & simc/dbc_extract
 pip install SLPP-23 # hero-dbc
 pip install setuptools # hero-rotation-generator
+pip install pylint # linter used by IDEs
 
 # Others
 brew install libpng # Used for any 3rd party postprocess lib (like webpack image loaders/plugins)

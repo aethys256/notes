@@ -35,9 +35,10 @@ pip2 install --upgrade pip
 pip install --upgrade pip
 pyenv rehash
 
-pip install --upgrade bitarray pefile # simc/dbc_extract
+pip install --upgrade bitarray pefile requests # simc/casc_extract & simc/dbc_extract
 pip install --upgrade SLPP-23 # hero-dbc
 pip install --upgrade setuptools # hero-rotation-generator
+pip install --upgrade pylint # linter used by IDEs
 
 echo -e '\n'
 echo '------ Homebrew ------' && brew --version && echo ''
@@ -109,8 +110,9 @@ pip install --upgrade pip
 pyenv rehash
 pyenv versions && pyenv --version && python --version && pip --version && python2 --version && pip2 --version
 
-pip install --upgrade bitarray pefile # simc/dbc_extract
+pip install --upgrade bitarray pefile requests # simc/casc_extract & simc/dbc_extract
 pip install --upgrade SLPP-23 # hero-dbc
 pip install --upgrade setuptools # hero-rotation-generator
+pip install --upgrade pylint # linter used by IDEs
 
 ```
