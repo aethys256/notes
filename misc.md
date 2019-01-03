@@ -68,6 +68,15 @@ pip freeze | xargs pip uninstall -y
 
 ```
 
+### GPSBabel
+
+#### Convert GPX Track to GPX Waypoints
+
+```sh
+gpsbabel -i gpx -f INPUT.gpx -x transform,wpt=trk -o gpx -F OUTPUT.gpx
+
+```
+
 ## macOS
 
 ### SimC building
