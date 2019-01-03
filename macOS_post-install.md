@@ -188,6 +188,8 @@ brew install clang-format # Clang format (used to format SimC)
 brew install awscli # AWS CLI
 brew install awsebcli # AWS ElasticBeanstalk CLI
 brew install heroku/brew/heroku # Heroku CLI
+brew install yarn --without-node # Yarn
+brew install gpsbabel # GPSBabel
 
 ```
 
