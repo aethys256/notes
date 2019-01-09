@@ -25,8 +25,8 @@ export NVM_VERSION_CURRENT_LTS=$(nvm version lts/*)
 
 rvm get master && rvm reload && rvm reinstall default && yes | rvm upgrade default && rvm use default && gem update
 
-yes n | pyenv install $(pyenv-stable-latest)
-yes n | pyenv install $(pyenv2-stable-latest)
+yes n | env PYTHON_CONFIGURE_OPTS="--enable-framework CC=clang" pyenv install $(pyenv-stable-latest)
+yes n | env PYTHON_CONFIGURE_OPTS="--enable-framework CC=clang" pyenv install $(pyenv2-stable-latest)
 pyenv global $(pyenv-stable-latest) $(pyenv2-stable-latest)
 yes | pyenv uninstall $(pyenv-stable-previous)
 yes | pyenv uninstall $(pyenv2-stable-previous)
@@ -99,8 +99,8 @@ bundle update
 
 ### Upgrade Python
 ```sh
-yes n | pyenv install $(pyenv-stable-latest)
-yes n | pyenv install $(pyenv2-stable-latest)
+yes n | env PYTHON_CONFIGURE_OPTS="--enable-framework CC=clang" pyenv install $(pyenv-stable-latest)
+yes n | env PYTHON_CONFIGURE_OPTS="--enable-framework CC=clang" pyenv install $(pyenv2-stable-latest)
 pyenv global $(pyenv-stable-latest) $(pyenv2-stable-latest)
 yes | pyenv uninstall $(pyenv-stable-previous)
 yes | pyenv uninstall $(pyenv2-stable-previous)

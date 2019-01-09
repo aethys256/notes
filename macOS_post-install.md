@@ -163,8 +163,8 @@ rvm get master && rvm reload && yes | rvm upgrade default && rvm use default && 
 rvm list && rvm --version && ruby --version && bundler --version
 
 # Install latest Python & Pip, including the 2.x branch. The later is available through python2 command (and pip2)
-yes n | pyenv install $(pyenv-stable-latest)
-yes n | pyenv install $(pyenv2-stable-latest)
+yes n | env PYTHON_CONFIGURE_OPTS="--enable-framework CC=clang" pyenv install $(pyenv-stable-latest)
+yes n | env PYTHON_CONFIGURE_OPTS="--enable-framework CC=clang" pyenv install $(pyenv2-stable-latest)
 pyenv global $(pyenv-stable-latest) $(pyenv2-stable-latest)
 pyenv rehash
 pip2 install --upgrade pip
