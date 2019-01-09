@@ -83,6 +83,7 @@ rm ~/.bash_profile; rm ~/.bashrc; rm ~/.mkshrc; rm ~/.profile; rm ~/.zlogin; rm 
 #   *) PATH_IS_NOT_IN ;;
 # esac
 cat << 'EOF' > ~/.profile
+## SSH
 # Register the SSH private keys from ~/.ssh as identities
 grep -slR "PRIVATE" ~/.ssh | xargs ssh-add &> /dev/null
 
@@ -132,7 +133,10 @@ alias pyenv2-stable-list="pyenv-stable-list | grep '^2.'"
 alias pyenv2-stable-latest="pyenv2-stable-list | tail -1"
 alias pyenv2-stable-previous="pyenv2-stable-list | tail -2 | head -1"
 
-## Node (NVM)
+## NodeJS
+# npm Auth Token
+export NPM_TOKEN="XXXXXXXX"
+# nvm
 export NVM_DIR="${HOME}/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
 export NVM_VERSION_CURRENT_NODE=$(nvm version node)
@@ -146,6 +150,11 @@ case ":$PATH:" in
 esac
 # Load RVM into a shell session *as a function*
 [[ -s "${HOME}/.rvm/scripts/rvm" ]] && source "${HOME}/.rvm/scripts/rvm"
+EOF
+
+cat << 'EOF' > ~/.npmrc
+//registry.npmjs.org/:_authToken=${NPM_TOKEN}
+registry=https://registry.npmjs.org
 EOF
 
 ```
