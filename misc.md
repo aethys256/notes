@@ -6,7 +6,7 @@
 #### ElasticBeanstalk: Use 'npm run ...' during SSH session
 ```sh
 sudo su
-export PATH=$PATH:`ls -td /opt/elasticbeanstalk/node-install/node-* | head -1`/bin
+export PATH=$PATH:`ls -vdr /opt/elasticbeanstalk/node-install/node-* | head -1`/bin
 /opt/elasticbeanstalk/bin/get-config environment | python -c "import json,sys; obj=json.load(sys.stdin); f = open('/tmp/eb_env', 'w'); f.write('\n'.join(map(lambda x: 'export ' + x[0] + '=' + x[1], obj.iteritems())))"
 source /tmp/eb_env
 rm -f /tmp/eb_env
