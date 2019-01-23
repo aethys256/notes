@@ -16,6 +16,15 @@ cd /var/app/current/
 
 ```
 
+### Docker
+#### Clean
+```sh
+docker-compose down # Stop the container(s)
+docker rm -f $(docker ps -a -q) # Delete all containers
+docker volume rm $(docker volume ls -q) # Delete all volumes
+docker-compose up # Restart the containers
+```
+
 ### Heroku
 #### Login / Swap user
 ```sh
