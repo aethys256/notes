@@ -196,8 +196,9 @@ brew install clang-format # Clang format (used to format SimC)
 brew install awscli # AWS CLI
 brew install awsebcli # AWS ElasticBeanstalk CLI
 brew install heroku/brew/heroku # Heroku CLI
-brew install yarn --without-node # Yarn
 brew install gpsbabel # GPSBabel
+brew install yarn --without-node # Yarn (Node package manager)
+brew install composer # Composer (PHP package manager)
 
 # Old
 # brew install mongo # MongoDB ---> Use Docker instead
