@@ -188,19 +188,19 @@ pip install setuptools # hero-rotation-generator
 pip install pylint # linter used by IDEs
 
 # Others
-brew install libpng # Used for any 3rd party postprocess lib (like webpack image loaders/plugins)
-brew install graphicsmagick # Useful for image resizing, example: ionic-resources
-brew install gradle # Used to compile Android apps
-brew install qt openssl # QT & OpenSSL (used to compile SimC)
-brew install clang-format # Clang format (used to format SimC)
+brew install libpng # 3rd party post-process lib (like webpack image loaders/plugins)
+brew install graphicsmagick # Image resizing
 brew install awscli # AWS CLI
 brew install awsebcli # AWS ElasticBeanstalk CLI
 brew install heroku/brew/heroku # Heroku CLI
-brew install gpsbabel # GPSBabel
-brew install yarn --without-node # Yarn (Node package manager)
+brew install gradle # Mostly for Android stuff
+brew install gpsbabel # GPSBabel (GPS utility)
+brew install yarn --ignore-dependencies # Yarn (Node package manager)
 brew install composer # Composer (PHP package manager)
+brew install qt # QT (mostly for SimC GUI)
+brew install clang-format # Clang format (mostly to format SimC)
 
-# Old
+# Deprecated
 # brew install mongo # MongoDB ---> Use Docker instead
 # brew install mysql # MySQL ---> Use Docker instead
 
@@ -214,7 +214,8 @@ brew cask install visual-studio-code jetbrains-toolbox android-studio # IDEs
 brew cask install sourcetree # Git GUI client
 brew cask install postman # ADE
 brew cask install filezilla cyberduck # File transfer
-brew cask install thunderbird slack skype # Messaging
+brew cask install slack skype # Messaging
+brew cask install thunderbird # Mail client
 brew cask install vlc # Multimedia player
 brew cask install the-unarchiver # Archive utility
 brew cask install onyx # System utility
@@ -242,9 +243,9 @@ brew cask install virtualbox virtualbox-extension-pack # Virtualization
 ```
 Manually:
 ```
-Docker
 Audacity
 Battle.net
+Docker
 League of Legends
 HomeBank
 OpenVPN
@@ -274,20 +275,20 @@ brew cask install xquartz inkscape # Vector image edition
 ```
 
 ### JetBrains Intellij IDEA plugins
+
+#### Downloaded
 ```
 .env files support
 .ignore
 Apache config (.htaccess) support
 BashSupport
 CSV Plugin
-Docker integration
 EJS
 File Watchers
 Handlebars/Mustache
 Ideolog
 Ini4Idea
 JS GraphQL
-Kotlin
 LiveEdit
 Lua
 Mongo Plugin
@@ -299,4 +300,9 @@ Ruby
 String Manipulation
 Styled Components
 Vue.js
+```
+
+#### Bundled (but might be needed in WebStorm)
+```
+Docker Integration
 ```
