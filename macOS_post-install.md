@@ -48,7 +48,7 @@ brew --version
 ### Basics + NVM + RVM + Java8 + Misc
 ```sh
 # Basics
-brew install git git-flow git-lfs gnupg openssl zlib
+brew install git git-flow git-lfs gnupg openssl zlib sqlite
 
 # Node - NVM
 brew install nvm
@@ -99,6 +99,14 @@ case ":$PATH:" in
   *:"~/.local/bin":*) ;;
   *) export PATH="~/.local/bin:${PATH}" ;;
 esac
+
+## Compilation flags (mostly for PyEnv)
+export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
+export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
+export LDFLAGS="${LDFLAGS} -L/usr/local/opt/sqlite/lib"
+export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/sqlite/include"
+export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/zlib/lib/pkgconfig"
+export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/sqlite/lib/pkgconfig"
 
 ## Java 1.8
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
@@ -199,10 +207,8 @@ brew install yarn --ignore-dependencies # Yarn (Node package manager)
 brew install composer # Composer (PHP package manager)
 brew install qt # QT (mostly for SimC GUI)
 brew install clang-format # Clang format (mostly to format SimC)
-
-# Deprecated
-# brew install mongo # MongoDB ---> Use Docker instead
-# brew install mysql # MySQL ---> Use Docker instead
+brew install mongo # MongoDB ---> Use Docker instead of the service
+brew install mysql # MySQL ---> Use Docker instead of the service
 
 ```
 
