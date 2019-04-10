@@ -83,6 +83,9 @@ rm ~/.bash_profile; rm ~/.bashrc; rm ~/.mkshrc; rm ~/.profile; rm ~/.zlogin; rm 
 #   *) PATH_IS_NOT_IN ;;
 # esac
 cat << 'EOF' > ~/.profile
+## Prompt
+export PS1="\[\033[35m\]\t\[\033[m\]-\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+
 ## LANG
 export LANG="en_US.UTF-8"
 export LANGUAGE="en_US.UTF-8"
