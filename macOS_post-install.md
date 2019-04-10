@@ -83,6 +83,11 @@ rm ~/.bash_profile; rm ~/.bashrc; rm ~/.mkshrc; rm ~/.profile; rm ~/.zlogin; rm 
 #   *) PATH_IS_NOT_IN ;;
 # esac
 cat << 'EOF' > ~/.profile
+## LANG
+export LANG="en_US.UTF-8"
+export LANGUAGE="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
 ## SSH
 # Register the SSH private keys from ~/.ssh as identities
 grep -slR "PRIVATE" ~/.ssh | xargs ssh-add &> /dev/null
