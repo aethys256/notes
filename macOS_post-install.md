@@ -13,40 +13,35 @@ Here is how I setup my development environment.
 ### Install XCode / XCode Command Line Tools
 I do use XCode that's why, if you use it just for the CLI, homebrew will install it for you.
 Once it's installed, `reboot` then do:
-```sh
+```bash
 sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 
 sudo xcodebuild -license accept
-
 ```
 
 If you want to install the Command Line Tools yourself, you can also do it using this:
-```sh
+```bash
 xcode-select --install
 
 sudo xcode-select --switch /Library/Developer/CommandLineTools
-
 ```
 
 ### Install brew + cask & cask versions
-```sh
+```bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
 ```
-```sh
+```bash
 brew doctor
-
 ```
-```sh
+```bash
 brew tap homebrew/cask
 brew tap homebrew/cask-versions
-brew update && brew upgrade && brew cask upgrade && brew cleanup && brew prune
+brew update && brew upgrade && brew cask upgrade && brew cleanup
 brew --version
-
 ```
 
 ### Basics + NVM + RVM + Java8 + Misc
-```sh
+```bash
 # Basics
 brew install git git-flow git-lfs gnupg openssl zlib sqlite
 
@@ -62,16 +57,14 @@ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB8
 brew install pyenv
 
 # PHP (Used as interpreter only in the IDE)
-brew install php@5.6 php@7.0 php@7.1 php@7.2
-brew link --overwrite php # Will link the latest php, i.e. 7.2 here
+brew install php@5.6 php@7.2 php@7.3
+brew link --overwrite php # Will link the latest php, i.e. 7.3 here
 
 ## Requires password
-# Java + Java8 / JDK 1.8
+# Java
 brew cask install java
-brew cask install java8
-
 ```
-```sh
+```bash
 # Setup the initial .profile
 # We use .profile as only dotfile, see: https://superuser.com/a/789465
 rm ~/.bash_profile; rm ~/.bashrc; rm ~/.mkshrc; rm ~/.profile; rm ~/.zlogin; rm ~/.zshrc;
@@ -116,8 +109,11 @@ export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/sqlite/include"
 export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/zlib/lib/pkgconfig"
 export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/sqlite/lib/pkgconfig"
 
-## Java 1.8
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+## GitHub
+export GH_TOKEN="XXXXXXXX"
+
+## Java
+export JAVA_HOME=`/usr/libexec/java_home`
 
 ## Android
 export ANDROID_HOME="${HOME}/Library/Android/sdk"
@@ -166,18 +162,70 @@ case ":$PATH:" in
 esac
 # Load RVM into a shell session *as a function*
 [[ -s "${HOME}/.rvm/scripts/rvm" ]] && source "${HOME}/.rvm/scripts/rvm"
+
+## NodeJS
+# Automatically call "nvm use" on "cd"
+find-up () {
+    path=$(pwd)
+    while [[ "$path" != "" && ! -e "$path/$1" ]]; do
+        path=${path%/*}
+    done
+    echo "$path"
+}
+cdnvm(){
+    cd "$@";
+    nvm_path=$(find-up .nvmrc | tr -d '[:space:]')
+
+    # If there are no .nvmrc file, use the default nvm version
+    if [[ ! $nvm_path = *[^[:space:]]* ]]; then
+
+        declare default_version;
+        default_version=$(nvm version default);
+
+        # If there is no default version, set it to `node`
+        # This will use the latest version on your machine
+        if [[ $default_version == "N/A" ]]; then
+            nvm alias default node;
+            default_version=$(nvm version default);
+        fi
+
+        # If the current version is not the default version, set it to use the default version
+        if [[ $(nvm current) != "$default_version" ]]; then
+            nvm use default;
+        fi
+
+        elif [[ -s $nvm_path/.nvmrc && -r $nvm_path/.nvmrc ]]; then
+        declare nvm_version
+        nvm_version=$(<"$nvm_path"/.nvmrc)
+
+        declare locally_resolved_nvm_version
+        # `nvm ls` will check all locally-available versions
+        # If there are multiple matching versions, take the latest one
+        # Remove the `->` and `*` characters and spaces
+        # `locally_resolved_nvm_version` will be `N/A` if no local versions are found
+        locally_resolved_nvm_version=$(nvm ls --no-colors $(<"./.nvmrc") | tail -1 | tr -d '\->*' | tr -d '[:space:]')
+
+        # If it is not already installed, install it
+        # `nvm install` will implicitly use the newly-installed version
+        if [[ "$locally_resolved_nvm_version" == "N/A" ]]; then
+            nvm install "$nvm_version";
+        elif [[ $(nvm current) != "$locally_resolved_nvm_version" ]]; then
+            nvm use "$nvm_version";
+        fi
+    fi
+}
+alias cd='cdnvm'
 EOF
 
 cat << 'EOF' > ~/.npmrc
 //registry.npmjs.org/:_authToken=${NPM_TOKEN}
 registry=https://registry.npmjs.org
 EOF
-
 ```
 It's time for a `reboot` to be safe.
 
 ### Upgrade Ruby & Node LTS & Tools
-```sh
+```bash
 # Install Node & Node LTS
 nvm install node && nvm use node && npm update -g
 nvm install --lts && nvm use lts/* && npm update -g && nvm alias default lts/*
@@ -215,13 +263,13 @@ brew install yarn --ignore-dependencies # Yarn (Node package manager)
 brew install composer # Composer (PHP package manager)
 brew install qt # QT (mostly for SimC GUI)
 brew install clang-format # Clang format (mostly to format SimC)
-brew install mongo # MongoDB ---> Use Docker instead of the service
-brew install mysql # MySQL ---> Use Docker instead of the service
-
+brew install mongo # MongoDB ---> This is for CLI, use Docker instead of the service
+brew install mysql # MySQL ---> This is for CLI, use Docker instead of the service
+brew install postgresql # MySQL ---> This is for CLI, use Docker instead of the service
 ```
 
 ### Essential casks
-```sh
+```bash
 brew cask install google-chrome firefox opera # Browsers
 brew cask install keepassxc # Password manager
 brew cask install visual-studio-code jetbrains-toolbox android-studio # IDEs
@@ -241,11 +289,10 @@ brew cask install scroll-reverser # Reverse mouse while keeping natural for trac
 brew cask install dotnet-sdk # .NET SDK
 brew cask install adobe-air flash-npapi flash-ppapi # Adobe Air & Flash Player NPAPI (Safari & Firefox) & Flash Player PPAPI (Chromium & Opera)
 brew cask install teamviewer chrome-remote-desktop-host # Screen sharing
-
 ```
 
 ### Personal only
-```sh
+```bash
 brew cask install twitch discord teamspeak-client # Gaming
 brew cask install transmission # Torrent file transfer
 brew cask install google-backup-and-sync cryptomator # File synchronization
@@ -253,7 +300,6 @@ brew cask install google-backup-and-sync cryptomator # File synchronization
 ## Requires password
 brew cask install obs # Streaming/Recording
 brew cask install virtualbox virtualbox-extension-pack # Virtualization
-
 ```
 Manually:
 ```
@@ -267,56 +313,85 @@ Skyfonts
 ```
 
 ### Apple only
-```sh
+```bash
 brew cask install smcfancontrol # Control the fan speed (& display temperature)
-
 ```
 
 ### Hackintosh only
-```sh
+```bash
 brew cask install clover-configurator # EFI Bootloader configurator
-
 ```
 
 ### Others
-```sh
+```bash
 brew cask install istat-menus # Hardware monitoring, free alternative: yujitach-menumeters
 brew cask install db-browser-for-sqlite # Popular browser for SQLite
 
 ## Requires password
 brew cask install xquartz inkscape # Vector image edition
-
 ```
 
 ### JetBrains Intellij IDEA plugins
 
-#### Downloaded
+#### Bundled (but might be needed in WebStorm)
+```
+Docker Integration
+Markdown
+```
+
+#### Misc
 ```
 .env files support
 .ignore
 Apache config (.htaccess) support
 BashSupport
 CSV Plugin
-EJS
+Database Navigator
 File Watchers
-Handlebars/Mustache
+GNU GetText files support ​(*.​po)
 Ideolog
 Ini4Idea
-JS GraphQL
+Kubernetes
 LiveEdit
-Lua
+String Manipulation
+```
+
+#### JavaScript / TypeScript
+```
+EJS
+Handlebars/Mustache
+JS GraphQL
 Mongo Plugin
 NodeJS
-PHP
 Prettier
-Python
-Ruby
-String Manipulation
 Styled Components
 Vue.js
 ```
 
-#### Bundled (but might be needed in WebStorm)
+#### PHP
 ```
-Docker Integration
+DQL Support
+PHP
+PHP Annotations
+PHP composer.​json support
+Php Inspections ​(EA Extended)
+PHP Toolbox
+Symfony Support
+Twig Support
+```
+
+#### Ruby
+```
+Ruby
+```
+
+#### Python
+```
+Python
+ReStructuredText Support
+```
+
+#### Lua
+```
+Lua
 ```

@@ -5,40 +5,35 @@
 ### Basics
 
 Install Ubuntu WSL
-
-```sh
+```bash
 sudo apt-get update
 sudo apt-get -y upgrade
 sudo apt-get install -y git-core
 sudo apt-get install -y curl gnupg build-essential
-
 ```
 
 Restart
 
 ### RVM
 cf: https://github.com/rvm/ubuntu_rvm
-```sh
+```bash
 sudo apt-get install -y software-properties-common
 sudo apt-add-repository -y ppa:rael-gc/rvm
 sudo apt-get update
 sudo apt-get install -y rvm
-
 ```
 
 Restart
 
 ### Ruby
-```sh
+```bash
 rvm install ruby # Password needed
 
 gem install bundler
-
 ```
 
 ### SimC & SimCScripts
-
-```sh
+```bash
 cd /mnt/d
 mkdir github
 cd github/
@@ -49,7 +44,6 @@ chmod +x ./generate_profiles.sh
 cd ../
 # SimCScripts
 git clone https://github.com/Ravenholdt-TC/SimcScripts.git
-
 ```
 
 Create the `SimcConfig.yml` file.
@@ -57,7 +51,7 @@ Create the `SimcConfig.yml` file.
 ## Run
 
 ### ssrun-wsl.sh
-```sh
+```bash
 cat << 'EOF' > /mnt/d/github/ssrun-wsl.sh
 #!/bin/bash
 
@@ -78,11 +72,10 @@ cp ${BASE_DIR}/SimcConfig-WSL.yml ${BASE_DIR}/SimcScripts/SimcConfig.yml
 ruby Run.rb
 EOF
 chmod +x /mnt/d/github/ssrun-wsl.sh
-
 ```
 
 ### ssclean-wsl.sh
-```sh
+```bash
 cat << 'EOF' > /mnt/d/github/ssclean-wsl.sh
 #!/bin/bash
 
@@ -93,13 +86,12 @@ git clean -xdf
 git reset --hard
 EOF
 chmod +x /mnt/d/github/ssclean-wsl.sh
-
 ```
 
 ## macOS Run
 
 ### ssrun-macos.sh
-```sh
+```bash
 cat << 'EOF' > /Volumes/DATA/github/ssrun-macos.sh
 #!/bin/bash
 
@@ -121,11 +113,10 @@ osascript -e "tell application \"Terminal\" to do script \"cd ${BASE_DIR}/SimcSc
 ruby Run.rb
 EOF
 chmod +x /Volumes/DATA/github/ssrun-macos.sh
-
 ```
 
 ### ssclean-macos.sh
-```sh
+```bash
 cat << 'EOF' > /Volumes/DATA/github/ssclean-macos.sh
 #!/bin/bash
 
@@ -136,5 +127,4 @@ git clean -xdf
 git reset --hard
 EOF
 chmod +x /Volumes/DATA/github/ssclean-macos.sh
-
 ```

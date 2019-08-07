@@ -855,20 +855,18 @@ Erase USB Drive in the Disk Utility:
 > Scheme: `GUID Partition Map`
 
 Copy High Sierra and make it bootable:
-```sh
+```bash
 sudo /Applications/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/USB --applicationpath /Applications/Install\ macOS\ High\ Sierra.app --nointeraction
-
 ```
-```sh
+```bash
 cd /Volumes/Install\ macOS\ High\ Sierra
 mkdir .IABootFiles
 cd .IABootFiles
 cp /Volumes/Install\ macOS\ High\ Sierra/System/Library/CoreServices/boot.efi .
-
 ```
 
 Mount the EFI partition of the USB Stick:
-```sh
+```bash
 # List the volumes & disks
 diskutil list
 # Spot the IDENTIFIER of the EFI partition of the USB Stick from the list.
@@ -878,7 +876,6 @@ sudo mkdir /Volumes/EFI
 
 # Mount the EFI partition
 sudo mount -t msdos /dev/IDENTIFIER /Volumes/EFI
-
 ```
 Copy the `EFI` folder to the `/Volumes/EFI` mounted partition
 
@@ -916,17 +913,15 @@ Using Clover Configurator, double check that everything set in the config.plist 
 Make a backup and upgrade Clover if needed.
 
 ### CPU Cosmetic
-```sh
+```bash
 cp /System/Library/PrivateFrameworks/AppleSystemInfo.framework/Versions/A/Resources/English.lproj/AppleSystemInfo.strings ~/Desktop/
 sudo mv /System/Library/PrivateFrameworks/AppleSystemInfo.framework/Versions/A/Resources/English.lproj/AppleSystemInfo.strings /System/Library/PrivateFrameworks/AppleSystemInfo.framework/Versions/A/Resources/English.lproj/AppleSystemInfo.strings-Backup
-
 ```
 Edit `AppleSystemInfo.strings` on the Desktop and change `UnknownCPUKind` to `4,6 GHz Intel Core i9-7980XE`
-```sh
+```bash
 sudo codesign -f -s - ~/Desktop/AppleSystemInfo.strings
 
 sudo cp ~/Desktop/AppleSystemInfo.strings /System/Library/PrivateFrameworks/AppleSystemInfo.framework/Versions/A/Resources/English.lproj/
-
 ```
 
 ## Conclusion
