@@ -246,7 +246,7 @@ pyenv rehash
 pyenv versions && pyenv --version && python --version && pip --version && python2 --version && pip2 --version
 
 # Install Python dependencies
-pip install bitarray pefile requests # simc/casc_extract & simc/dbc_extract
+pip install bitarray pefile requests fixedint # simc/casc_extract & simc/dbc_extract
 pip install SLPP-23 # hero-dbc
 pip install setuptools # hero-rotation-generator
 pip install pylint # linter used by IDEs

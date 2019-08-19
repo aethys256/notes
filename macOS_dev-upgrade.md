@@ -35,7 +35,7 @@ pip2 install --upgrade pip
 pip install --upgrade pip
 pyenv rehash
 
-pip install --upgrade bitarray pefile requests # simc/casc_extract & simc/dbc_extract
+pip install --upgrade bitarray pefile requests fixedint # simc/casc_extract & simc/dbc_extract
 pip install --upgrade SLPP-23 # hero-dbc
 pip install --upgrade setuptools # hero-rotation-generator
 pip install --upgrade pylint # linter used by IDEs
