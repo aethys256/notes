@@ -68,6 +68,18 @@ ssh-keygen -t rsa -b 4096 -C "comment, usually mail address" -f "filename, usual
 ssh-add ~/.ssh/PRIVATE-KEY-FILE &> /dev/null
 ```
 
+### PostgreSQL
+
+#### List all collations
+```sql
+SELECT * FROM pg_collation;
+```
+
+#### Create Database with UTF8
+```sql
+CREATE DATABASE "myDatabase" ENCODING 'UTF8' LC_COLLATE = 'en_US.utf8' LC_CTYPE = 'en_US.utf8' TEMPLATE template0;
+```
+
 ### Python
 
 #### Uninstall all pip packages
