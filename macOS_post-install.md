@@ -370,7 +370,9 @@ Vue.js
 
 #### PHP
 ```
+Blade
 DQL Support
+Laravel
 PHP
 PHP Annotations
 PHP composer.​json support

@@ -47,6 +47,15 @@ diff --unified=3 file1.ext file2.ext > file.diff
 ```
 Where the number after `--unified=` is the number of lines showing the context. To fully output the file, put a big number (> number of lines).
 
+### SSL
+
+#### Convert .pem & .key to .pfx (pkcs12)
+This example use Cloudflare Origin CA root certificates for CAfile but the idea is the same.
+```bash
+openssl pkcs12 -export -out myCertificate.pfx -in myCertificate.pem -inkey myCertificate.key -CAfile origin_ca_rsa_root.pem
+```
+It will then ask for a password before creating the certificate.
+
 ### SSH Key
 
 #### Generate
