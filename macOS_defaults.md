@@ -1,13 +1,15 @@
-## macOS defaults
+# macOS defaults
 
-**Credits**
-- https://github.com/mathiasbynens/dotfiles/blob/master/.macos
-- https://github.com/joeyhoer/starter
+## Credits
+
+- <https://github.com/mathiasbynens/dotfiles/blob/master/.macos>
+- <https://github.com/joeyhoer/starter>
 
 It's possible that some of them needs to be done manually (there are some `TODO` remaining).
 Once it'll be a bit more complete, I'll probably make an unattended script.
 
-### General
+## General
+
 ```bash
 # Appearance: "Blue" For Buttons, Menus, and Windows
 defaults write NSGlobalDomain AppleAquaColorVariant -int 1
@@ -40,13 +42,15 @@ defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool false
 # TODO
 ```
 
-### Desktop & Screen Saver
+## Desktop & Screen Saver
+
 ```bash
 # Start after: "Never"
 defaults -currentHost write com.apple.screensaver idleTime -int 0
 ```
 
-### Dock
+## Dock
+
 ```bash
 # Icon "size"
 defaults write com.apple.dock tilesize -int 45
@@ -88,7 +92,8 @@ defaults write com.apple.dock autohide-delay -float 0
 defaults write com.apple.dock autohide-time-modifier -float 0.3
 ```
 
-### Mission Control
+## Mission Control
+
 ```bash
 # "disable" Automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
@@ -123,13 +128,15 @@ defaults write com.apple.dock wvous-br-modifier -int 0
 # left one being the principal one).
 ```
 
-### Security & Privacy
+## Security & Privacy
+
 ```bash
 # Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 ```
 
-### Display
+## Display
+
 ```bash
 # "enable" Show mirroring options in the menu bar when available
 defaults write com.apple.airplay showInMenuBarIfPresent -bool true
@@ -152,7 +159,8 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 1
 # TODO
 ```
 
-### Energy Saver
+## Energy Saver
+
 ```bash
 # Turn display off after: "300" (5 minutes)
 # TODO
@@ -173,7 +181,8 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 1
 # TODO
 ```
 
-### Keyboard
+## Keyboard
+
 ```bash
 # Key Repeat "speed"
 defaults write NSGlobalDomain KeyRepeat -int 3
@@ -229,7 +238,8 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 2
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 ```
 
-### Mouse
+## Mouse
+
 ```bash
 # "enable" Scroll direction: Natural
 # TODO
@@ -238,7 +248,8 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 # TODO
 ```
 
-### Trackpad
+## Trackpad
+
 ```bash
 # TODO
 
@@ -246,7 +257,8 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 # TODO
 ```
 
-### Sound
+## Sound
+
 ```bash
 # "enable" Play user interface sound effects
 defaults write com.apple.systemsound com.apple.sound.uiaudio.enabled -bool true
@@ -259,17 +271,20 @@ defaults write NSGlobalDomain com.apple.sound.beep.feedback -bool false
 defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.volume" -int 0
 ```
 
-### iCloud
+## iCloud
+
 ```bash
 # Save to disk (not to iCloud) by default
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 ```
 
-### App Store
+## App Store
+
 ```bash
 # Do not complain about admin password for the next 5 minutes
 sudo -v
 ```
+
 ```bash
 # "enable" Automatically check for updates
 sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
@@ -291,7 +306,8 @@ sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate CriticalUpdate
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 ```
 
-### Siri
+## Siri
+
 ```bash
 # "disable" Enable Ask Siri
 defaults write com.apple.assistant.support "Assistant Enabled" -bool false
@@ -300,13 +316,15 @@ defaults write com.apple.assistant.support "Assistant Enabled" -bool false
 defaults write com.apple.Siri StatusMenuVisible -bool false
 ```
 
-### Accessibility
+## Accessibility
+
 ```bash
 # "disable" Enable Slow Keys
 defaults write com.apple.universalaccess slowKey -bool false
 ```
 
-### Finder
+## Finder
+
 ```bash
 # Show these items on the desktop: "Hard disks", "External disks", "CDs, DVDs, and iPods", "Connected servers"
 defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
@@ -392,7 +410,8 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 ```
 
-### Safari
+## Safari
+
 ```bash
 # Safari opens with: "All windows from last sessions"
 defaults write com.apple.Safari AlwaysRestoreSessionAtLaunch -bool true
@@ -501,7 +520,8 @@ defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool 
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
 ```
 
-### Extras
+## Extras
+
 ```bash
 # Terminal: "Pro" theme as default
 defaults write com.apple.terminal "Default Window Settings" -string 'Pro'
@@ -523,8 +543,10 @@ defaults write com.apple.DiskUtility SidebarShowAllDevices -bool true
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 ```
 
-### Misc
+## Misc
+
 Should be applied manually -one by one- if needed
+
 ```bash
 # Increase mouse speed beyond the max (GUI max is 3.0), useful mostly for Magic Mouse
 defaults write -g com.apple.mouse.scaling -float 5.0
@@ -532,4 +554,5 @@ defaults write -g com.apple.mouse.scaling -float 5.0
 # Disable automatic termination of inactive apps
 defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
 ```
+
 Do not forget to manually review **Security & Privacy**, **Displays**, **Inputs (Keyboard/Mouse/Trackpad)**, **Sharing** and **Users & Groups** then `reboot`.

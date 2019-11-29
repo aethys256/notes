@@ -1,18 +1,23 @@
 # Post Install Walkthrough (macOS)
 
 ## Introduction
+
 These are my personal macOS post-install notes. Feel free to pick-up whatever you might need.
 Before starting, do not forget to update macOS to the latest update thanks to the App Store.
 
 ## macOS defaults
+
 Refer to `macOS_defaults` instructions.
 
 ## Dev Environment
+
 Here is how I setup my development environment.
 
 ### Install XCode / XCode Command Line Tools
+
 I do use XCode that's why, if you use it just for the CLI, homebrew will install it for you.
 Once it's installed, `reboot` then do:
+
 ```bash
 sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 
@@ -20,6 +25,7 @@ sudo xcodebuild -license accept
 ```
 
 If you want to install the Command Line Tools yourself, you can also do it using this:
+
 ```bash
 xcode-select --install
 
@@ -27,12 +33,15 @@ sudo xcode-select --switch /Library/Developer/CommandLineTools
 ```
 
 ### Install brew + cask & cask versions
+
 ```bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
+
 ```bash
 brew doctor
 ```
+
 ```bash
 brew tap homebrew/cask
 brew tap homebrew/cask-versions
@@ -41,6 +50,7 @@ brew --version
 ```
 
 ### Basics + NVM + RVM + Java8 + Misc
+
 ```bash
 # Basics
 brew install git git-flow git-lfs gnupg openssl zlib sqlite
@@ -50,20 +60,20 @@ brew install nvm
 mkdir ~/.nvm
 
 # Ruby - RVM
-gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+\curl -sSL https://rvm.io/mpapis.asc | gpg --import -
 \curl -sSL https://get.rvm.io | bash -s stable --ruby
 
 # Python - PyEnv
 brew install pyenv
 
-# PHP (Used as interpreter only in the IDE)
-brew install php@5.6 php@7.2 php@7.3
-brew link --overwrite php # Will link the latest php, i.e. 7.3 here
+# PHP (Only used as interpreter  in the IDE)
+brew install php
 
 ## Requires password
 # Java
 brew cask install java
 ```
+
 ```bash
 # Setup the initial .profile
 # We use .profile as only dotfile, see: https://superuser.com/a/789465
@@ -222,14 +232,17 @@ cat << 'EOF' > ~/.npmrc
 registry=https://registry.npmjs.org
 EOF
 ```
+
 It's time for a `reboot` to be safe.
 
 ### Upgrade Ruby & Node LTS & Tools
+
 ```bash
-# Install Node & Node LTS
+# Install Node & Node LTS & Yarn
 nvm install node && nvm use node && npm update -g
 nvm install --lts && nvm use lts/* && npm update -g && nvm alias default lts/*
 nvm list && echo "nvm: $(nvm --version)" && echo "node: $(node --version)" && echo "npm: $(npm --version)"
+brew install yarn --ignore-dependencies # Yarn (Node package manager)
 
 # Upgrade RVM and Ruby + install Bundler
 rvm get master && rvm reload && yes | rvm upgrade default && rvm use default && gem update && gem install bundler
@@ -252,148 +265,76 @@ pip install setuptools # hero-rotation-generator
 pip install pylint # linter used by IDEs
 
 # Others
+brew install mongo mysql postgresql # This is only for the CLI (use Docker)
 brew install libpng # 3rd party post-process lib (like webpack image loaders/plugins)
 brew install graphicsmagick # Image resizing
-brew install awscli # AWS CLI
-brew install awsebcli # AWS ElasticBeanstalk CLI
+brew install awscli awsebcli # AWS CLI & AWS ElasticBeanstalk CLI
 brew install heroku/brew/heroku # Heroku CLI
 brew install gradle # Mostly for Android stuff
-brew install gpsbabel # GPSBabel (GPS utility)
-brew install yarn --ignore-dependencies # Yarn (Node package manager)
 brew install composer # Composer (PHP package manager)
-brew install qt # QT (mostly for SimC GUI)
-brew install clang-format # Clang format (mostly to format SimC)
-brew install mongo # MongoDB ---> This is for CLI, use Docker instead of the service
-brew install mysql # MySQL ---> This is for CLI, use Docker instead of the service
-brew install postgresql # MySQL ---> This is for CLI, use Docker instead of the service
+brew install gpsbabel # GPSBabel (GPS utility)
+brew install qt clang-format # QT (mostly for SimC)
+brew install watchman # Needed by Prisma GraphQL Extension for VSCode
 ```
 
 ### Essential casks
+
 ```bash
-brew cask install google-chrome firefox opera # Browsers
+### Essentials ###
+brew cask install google-chrome firefox # Browsers
 brew cask install keepassxc # Password manager
-brew cask install visual-studio-code jetbrains-toolbox android-studio # IDEs
+brew cask install visual-studio-code jetbrains-toolbox # IDEs
 brew cask install sourcetree # Git GUI client
 brew cask install postman # ADE
-brew cask install filezilla cyberduck # File transfer
+brew cask install cyberduck # File transfer
 brew cask install slack skype # Messaging
-brew cask install thunderbird # Mail client
 brew cask install vlc # Multimedia player
 brew cask install the-unarchiver # Archive utility
 brew cask install onyx # System utility
 brew cask install symboliclinker # Symbolic link in context menu
-brew cask install spectacle # Window management app, need to be added in Accessibility settings
+brew cask install spectacle # Window management app
 brew cask install scroll-reverser # Reverse mouse while keeping natural for trackpad
 
 ## Requires password
-brew cask install dotnet-sdk # .NET SDK
 brew cask install adobe-air flash-npapi flash-ppapi # Adobe Air & Flash Player NPAPI (Safari & Firefox) & Flash Player PPAPI (Chromium & Opera)
 brew cask install teamviewer chrome-remote-desktop-host # Screen sharing
-```
 
-### Personal only
-```bash
-brew cask install twitch discord teamspeak-client # Gaming
-brew cask install transmission # Torrent file transfer
+
+### Others ###
 brew cask install google-backup-and-sync cryptomator # File synchronization
-
-## Requires password
-brew cask install obs # Streaming/Recording
-brew cask install virtualbox virtualbox-extension-pack # Virtualization
-```
-Manually:
-```
-Audacity
-Battle.net
-Docker
-League of Legends
-HomeBank
-OpenVPN
-Skyfonts
+brew cask install transmission # Torrent file transfer
 ```
 
-### Apple only
-```bash
-brew cask install smcfancontrol # Control the fan speed (& display temperature)
-```
+### Manually
+
+- [Audacity](https://www.audacityteam.org/download/mac/)
+- [Battle.net](https://www.blizzard.com/en-us/apps/battle.net/desktop)
+- [Discord](https://discordapp.com/download)
+- [Docker](https://download.docker.com/mac/stable/Docker.dmg)
+- [FileZilla](https://filezilla-project.org/download.php?platform=osx)
+- [League of Legends](https://signup.euw.leagueoflegends.com/en/signup/redownload)
+- [Logitech Gaming Software](https://support.logi.com/hc/en-001/articles/360025298053-Logitech-Gaming-Software)
+- [Microsoft Office](https://www.office.com/apps) + [Microsoft Teams](https://teams.microsoft.com/downloads)
+- [MongoDB Compass Comunity Edition](https://www.mongodb.com/download-center/compass)
+- [OBS](https://obsproject.com/download)
+- [Skyfonts](https://www.monotype.com/products/skyfonts)
+- [Spotify](https://www.spotify.com/us/download/mac)
+- [Teamspeak](https://teamspeak.com/en/downloads/)
+- [Twitch](https://www.twitch.tv/downloads/videos/all)
+- [Unity Hub](https://unity3d.com/get-unity/download) + [.NET Core](https://dotnet.microsoft.com/download) + [Mono](https://www.mono-project.com/download/stable/) (Stable channel for VSCode)
 
 ### Hackintosh only
+
 ```bash
 brew cask install clover-configurator # EFI Bootloader configurator
 ```
 
 ### Others
+
 ```bash
 brew cask install istat-menus # Hardware monitoring, free alternative: yujitach-menumeters
 brew cask install db-browser-for-sqlite # Popular browser for SQLite
 
 ## Requires password
 brew cask install xquartz inkscape # Vector image edition
-```
-
-### JetBrains Intellij IDEA plugins
-
-#### Bundled (but might be needed in WebStorm)
-```
-Docker Integration
-Markdown
-```
-
-#### Misc
-```
-.env files support
-.ignore
-Apache config (.htaccess) support
-BashSupport
-CSV Plugin
-Database Navigator
-File Watchers
-GNU GetText files support ​(*.​po)
-Ideolog
-Ini4Idea
-Kubernetes
-LiveEdit
-String Manipulation
-```
-
-#### JavaScript / TypeScript
-```
-EJS
-Handlebars/Mustache
-JS GraphQL
-Mongo Plugin
-NodeJS
-Prettier
-Styled Components
-Vue.js
-```
-
-#### PHP
-```
-Blade
-DQL Support
-Laravel
-PHP
-PHP Annotations
-PHP composer.​json support
-Php Inspections ​(EA Extended)
-PHP Toolbox
-Symfony Support
-Twig Support
-```
-
-#### Ruby
-```
-Ruby
-```
-
-#### Python
-```
-Python
-ReStructuredText Support
-```
-
-#### Lua
-```
-Lua
 ```

@@ -1,12 +1,14 @@
 # Dev Upgrade Utils (macOS)
 
 ## Introduction
+
 These are my personal macOS dev-upgrades notes. Feel free to pick-up whatever you might need.
 Before starting, remember that those commands are related to my setup, see `macOS_post-install` for more infos.
 
 ## AIO
 
 ### Script
+
 ```bash
 cat << 'EOF' > ~/aio-upgrade.sh
 #!/bin/bash
@@ -50,6 +52,7 @@ chmod +x ~/aio-upgrade.sh
 ```
 
 ### Command to call the script
+
 ```bash
 ~/aio-upgrade.sh
 ```
@@ -57,6 +60,7 @@ chmod +x ~/aio-upgrade.sh
 ## macOS
 
 ### Upgrade brew & casks
+
 ```bash
 brew update && brew upgrade && brew cask upgrade && brew cleanup
 brew --version
@@ -65,6 +69,7 @@ brew --version
 ## Node
 
 ### Upgrade Node & Node LTS w/ npm
+
 ```bash
 nvm install node --reinstall-packages-from=${NVM_VERSION_CURRENT_NODE}
 nvm use node && npm i npm -g && npm update -g
@@ -78,13 +83,16 @@ nvm list && echo "nvm: $(nvm --version)" && echo "node: $(node --version)" && ec
 ## Ruby
 
 ### Upgrade RVM & Ruby & Gems
+
 Note: We reinstall ruby because brew can break it during his update, otherwise it's not needed to reinstall.
+
 ```bash
 rvm get master && rvm reload && rvm reinstall default && yes | rvm upgrade default && rvm use default && gem update
 rvm list && rvm --version && ruby --version && bundler --version
 ```
 
 ### Upgrade a Gemfile
+
 ```bash
 bundle update
 ```
@@ -92,6 +100,7 @@ bundle update
 ## Python
 
 ### Upgrade Python
+
 ```bash
 yes n | env PYTHON_CONFIGURE_OPTS="--enable-framework CC=clang" pyenv install $(pyenv-stable-latest)
 yes n | env PYTHON_CONFIGURE_OPTS="--enable-framework CC=clang" pyenv install $(pyenv2-stable-latest)
