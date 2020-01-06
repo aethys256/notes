@@ -61,6 +61,7 @@ mkdir ~/.nvm
 
 # Ruby - RVM
 \curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+\curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -
 \curl -sSL https://get.rvm.io | bash -s stable --ruby
 
 # Python - PyEnv
@@ -265,7 +266,9 @@ pip install setuptools # hero-rotation-generator
 pip install pylint # linter used by IDEs
 
 # Others
-brew install mongo mysql postgresql # This is only for the CLI (use Docker)
+brew install mongo mysql@5.7 postgresql@11 # This is only for the CLI (use Docker)
+brew link mysql@5.7 --force
+brew link postgresql@11 --force
 brew install libpng # 3rd party post-process lib (like webpack image loaders/plugins)
 brew install graphicsmagick # Image resizing
 brew install awscli awsebcli # AWS CLI & AWS ElasticBeanstalk CLI
@@ -286,6 +289,7 @@ brew cask install keepassxc # Password manager
 brew cask install visual-studio-code jetbrains-toolbox # IDEs
 brew cask install sourcetree # Git GUI client
 brew cask install postman # ADE
+brew cask install pgadmin4 # PostgreSQL management
 brew cask install cyberduck # File transfer
 brew cask install slack skype # Messaging
 brew cask install vlc # Multimedia player
