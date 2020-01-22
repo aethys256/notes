@@ -5,31 +5,27 @@
 ```json
 {
     "editor.codeActionsOnSave": {
-        "source.organizeImports": true
+        "source.fixAll.eslint": true
     },
-    "editor.codeActionsOnSaveTimeout": 20000,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.fontSize": 16,
+    "editor.fontSize": 14,
     "editor.renderWhitespace": "boundary",
     "editor.suggestSelection": "first",
-    "eslint.autoFixOnSave": true,
     "eslint.packageManager": "yarn",
-    "eslint.validate": [
-        "javascript",
-        "javascriptreact",
-        { "autoFix": true, "language": "typescript" },
-        { "autoFix": true, "language": "typescriptreact" }
-    ],
     "files.autoSave": "onFocusChange",
     "gitlens.codeLens.enabled": false,
+    "javascript.suggest.completeFunctionCalls": true,
     "javascript.updateImportsOnFileMove.enabled": "always",
     "material-icon-theme.activeIconPack": "react_redux",
     "npm.packageManager": "yarn",
     "telemetry.enableTelemetry": false,
     "typescript.locale": "en",
+    "typescript.suggest.completeFunctionCalls": true,
+    "typescript.tsserver.maxTsServerMemory": 6144,
     "typescript.updateImportsOnFileMove.enabled": "always",
-    "workbench.colorTheme": "Material Theme Darker High Contrast",
+    "window.zoomLevel": 0,
+    "workbench.colorTheme": "Material Theme High Contrast",
     "workbench.iconTheme": "material-icon-theme",
-    "workbench.tree.indent": 16,
+    "workbench.tree.indent": 14,
 }
 ```
