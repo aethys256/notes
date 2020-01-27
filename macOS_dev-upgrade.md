@@ -28,12 +28,9 @@ export NVM_VERSION_CURRENT_LTS=$(nvm version lts/*)
 rvm get master && rvm reload && rvm reinstall default && yes | rvm upgrade default && rvm use default && gem update
 
 yes n | env PYTHON_CONFIGURE_OPTS="--enable-framework CC=clang" pyenv install $(pyenv-stable-latest)
-yes n | env PYTHON_CONFIGURE_OPTS="--enable-framework CC=clang" pyenv install $(pyenv2-stable-latest)
-pyenv global $(pyenv-stable-latest) $(pyenv2-stable-latest)
+pyenv global $(pyenv-stable-latest)
 yes | pyenv uninstall $(pyenv-stable-previous)
-yes | pyenv uninstall $(pyenv2-stable-previous)
 pyenv rehash
-pip2 install --upgrade pip
 pip install --upgrade pip
 pyenv rehash
 
@@ -46,7 +43,7 @@ echo -e '\n'
 echo '------ Homebrew ------' && brew --version && echo ''
 echo '------ NVM ------' && nvm list && echo "nvm: $(nvm --version)" && echo "node: $(node --version)" && echo "npm: $(npm --version)" && echo ''
 echo '------ RVM ------' && rvm list && rvm --version && ruby --version && bundler --version && echo ''
-echo '------ PyEnv ------' && pyenv versions && pyenv --version && python --version && pip --version && python2 --version && pip2 --version && echo ''
+echo '------ PyEnv ------' && pyenv versions && pyenv --version && python --version && pip --version && echo ''
 EOF
 chmod +x ~/aio-upgrade.sh
 ```
@@ -103,15 +100,12 @@ bundle update
 
 ```bash
 yes n | env PYTHON_CONFIGURE_OPTS="--enable-framework CC=clang" pyenv install $(pyenv-stable-latest)
-yes n | env PYTHON_CONFIGURE_OPTS="--enable-framework CC=clang" pyenv install $(pyenv2-stable-latest)
-pyenv global $(pyenv-stable-latest) $(pyenv2-stable-latest)
+pyenv global $(pyenv-stable-latest)
 yes | pyenv uninstall $(pyenv-stable-previous)
-yes | pyenv uninstall $(pyenv2-stable-previous)
 pyenv rehash
-pip2 install --upgrade pip
 pip install --upgrade pip
 pyenv rehash
-pyenv versions && pyenv --version && python --version && pip --version && python2 --version && pip2 --version
+pyenv versions && pyenv --version && python --version && pip --version
 
 pip install --upgrade bitarray pefile requests # simc/casc_extract & simc/dbc_extract
 pip install --upgrade SLPP-23 # hero-dbc

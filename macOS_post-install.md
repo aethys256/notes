@@ -67,7 +67,7 @@ mkdir ~/.nvm
 # Python - PyEnv
 brew install pyenv
 
-# PHP (Only used as interpreter  in the IDE)
+# PHP (Only used as interpreter in the IDE)
 brew install php
 
 ## Requires password
@@ -98,6 +98,11 @@ export LC_ALL="en_US.UTF-8"
 ## SSH
 # Register the SSH private keys from ~/.ssh as identities
 grep -slR "PRIVATE" ~/.ssh | xargs ssh-add &> /dev/null
+
+## SourceTree
+# In order to have our PATH correctly setup, we have to open SourceTree from a terminal, so we make an alias for that.
+# See https://community.atlassian.com/t5/Bitbucket-questions/SourceTree-Hook-failing-because-paths-don-t-seem-to-be-set/qaq-p/274792
+alias ostree="open /Applications/SourceTree.app"
 
 ## Homebrew
 # Add to the PATH: "$(brew --prefix)/sbin"
@@ -152,9 +157,6 @@ esac
 alias pyenv-stable-list="pyenv install --list | sed 's/^  //' | grep '^\d' | grep --invert-match 'dev\|a\|b\|rc'"
 alias pyenv-stable-latest="pyenv-stable-list | tail -1"
 alias pyenv-stable-previous="pyenv-stable-list | tail -2 | head -1"
-alias pyenv2-stable-list="pyenv-stable-list | grep '^2.'"
-alias pyenv2-stable-latest="pyenv2-stable-list | tail -1"
-alias pyenv2-stable-previous="pyenv2-stable-list | tail -2 | head -1"
 
 ## NodeJS
 # npm Auth Token
@@ -169,63 +171,10 @@ export NVM_VERSION_CURRENT_LTS=$(nvm version lts/*)
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 case ":$PATH:" in
   *:"${HOME}/.rvm/bin":*) ;;
-  *) export PATH="${PATH}:${HOME}/.rvm/bin" ;;
+  *) export PATH="${HOME}/.rvm/bin:${PATH}" ;;
 esac
 # Load RVM into a shell session *as a function*
 [[ -s "${HOME}/.rvm/scripts/rvm" ]] && source "${HOME}/.rvm/scripts/rvm"
-
-## NodeJS
-# Automatically call "nvm use" on "cd"
-find-up () {
-    path=$(pwd)
-    while [[ "$path" != "" && ! -e "$path/$1" ]]; do
-        path=${path%/*}
-    done
-    echo "$path"
-}
-cdnvm(){
-    cd "$@";
-    nvm_path=$(find-up .nvmrc | tr -d '[:space:]')
-
-    # If there are no .nvmrc file, use the default nvm version
-    if [[ ! $nvm_path = *[^[:space:]]* ]]; then
-
-        declare default_version;
-        default_version=$(nvm version default);
-
-        # If there is no default version, set it to `node`
-        # This will use the latest version on your machine
-        if [[ $default_version == "N/A" ]]; then
-            nvm alias default node;
-            default_version=$(nvm version default);
-        fi
-
-        # If the current version is not the default version, set it to use the default version
-        if [[ $(nvm current) != "$default_version" ]]; then
-            nvm use default;
-        fi
-
-        elif [[ -s $nvm_path/.nvmrc && -r $nvm_path/.nvmrc ]]; then
-        declare nvm_version
-        nvm_version=$(<"$nvm_path"/.nvmrc)
-
-        declare locally_resolved_nvm_version
-        # `nvm ls` will check all locally-available versions
-        # If there are multiple matching versions, take the latest one
-        # Remove the `->` and `*` characters and spaces
-        # `locally_resolved_nvm_version` will be `N/A` if no local versions are found
-        locally_resolved_nvm_version=$(nvm ls --no-colors $(<"./.nvmrc") | tail -1 | tr -d '\->*' | tr -d '[:space:]')
-
-        # If it is not already installed, install it
-        # `nvm install` will implicitly use the newly-installed version
-        if [[ "$locally_resolved_nvm_version" == "N/A" ]]; then
-            nvm install "$nvm_version";
-        elif [[ $(nvm current) != "$locally_resolved_nvm_version" ]]; then
-            nvm use "$nvm_version";
-        fi
-    fi
-}
-alias cd='cdnvm'
 EOF
 
 cat << 'EOF' > ~/.npmrc
@@ -243,21 +192,19 @@ It's time for a `reboot` to be safe.
 nvm install node && nvm use node && npm update -g
 nvm install --lts && nvm use lts/* && npm update -g && nvm alias default lts/*
 nvm list && echo "nvm: $(nvm --version)" && echo "node: $(node --version)" && echo "npm: $(npm --version)"
-brew install yarn --ignore-dependencies # Yarn (Node package manager)
+brew install yarn # Yarn (Node package manager)
 
-# Upgrade RVM and Ruby + install Bundler
-rvm get master && rvm reload && yes | rvm upgrade default && rvm use default && gem update && gem install bundler
+# Upgrade RVM and Ruby
+rvm get master && rvm reload && yes | rvm upgrade default && rvm use default && gem update
 rvm list && rvm --version && ruby --version && bundler --version
 
-# Install latest Python & Pip, including the 2.x branch. The later is available through python2 command (and pip2)
+# Install latest Python & Pip.
 yes n | env PYTHON_CONFIGURE_OPTS="--enable-framework CC=clang" pyenv install $(pyenv-stable-latest)
-yes n | env PYTHON_CONFIGURE_OPTS="--enable-framework CC=clang" pyenv install $(pyenv2-stable-latest)
-pyenv global $(pyenv-stable-latest) $(pyenv2-stable-latest)
+pyenv global $(pyenv-stable-latest)
 pyenv rehash
-pip2 install --upgrade pip
 pip install --upgrade pip
 pyenv rehash
-pyenv versions && pyenv --version && python --version && pip --version && python2 --version && pip2 --version
+pyenv versions && pyenv --version && python --version && pip --version
 
 # Install Python dependencies
 pip install bitarray pefile requests fixedint # simc/casc_extract & simc/dbc_extract
@@ -276,7 +223,7 @@ brew install heroku/brew/heroku # Heroku CLI
 brew install gradle # Mostly for Android stuff
 brew install composer # Composer (PHP package manager)
 brew install gpsbabel # GPSBabel (GPS utility)
-brew install qt clang-format # QT (mostly for SimC)
+brew install qt clang-format # QT & ClangFormat (mostly for SimC)
 brew install watchman # Needed by Prisma GraphQL Extension for VSCode
 ```
 
