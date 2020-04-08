@@ -2,17 +2,21 @@
 
 ## Tools
 
-- [Material Theme (equinusocio.vsc-material-theme)](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme)
-- [Material Icon Theme (pkief.material-icon-theme)](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
+- [Copy Relative Path and Line Numbers (ezforo.copy-relative-path-and-line-numbers)](https://marketplace.visualstudio.com/items?itemName=ezforo.copy-relative-path-and-line-numbers)
+- [DotENV (mikestead.dotenv)](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv)
 - [EditorConfig for VS Code (editorconfig.editorconfig)](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
-- [Visual Studio IntelliCode (visualstudioexptteam.vscodeintellicode)](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
-- [Terminals Manager (fabiospampinato.vscode-terminals)](https://marketplace.visualstudio.com/items?itemName=fabiospampinato.vscode-terminals)
 - [GitLens — Git supercharged (eamodio.gitlens)](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
-- [Remote - WSL (ms-vscode-remote.remote-wsl)](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
 - [Live Share (ms-vsliveshare.vsliveshare)](https://marketplace.visualstudio.com/items?itemName=ms-vsliveshare.vsliveshare)
+- [Log File Highlighter (emilast.logfilehighlighter)](https://marketplace.visualstudio.com/items?itemName=emilast.LogFileHighlighter)
+- [Material Icon Theme (pkief.material-icon-theme)](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
+- [Material Theme (equinusocio.vsc-community-material-theme)](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme)
+- [Remote - WSL (ms-vscode-remote.remote-wsl)](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
+- [Terminals Manager (fabiospampinato.vscode-terminals)](https://marketplace.visualstudio.com/items?itemName=fabiospampinato.vscode-terminals)
+- [Visual Studio IntelliCode (visualstudioexptteam.vscodeintellicode)](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
 
 ## DevOps
 
+- [Azure Account (ms-vscode.azure-account)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 - [Azure Pipelines (ms-azure-devops.azure-pipelines)](https://marketplace.visualstudio.com/items?itemName=ms-azure-devops.azure-pipelines)
 - [Docker (ms-azuretools.vscode-docker)](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
 - [Kubernetes (ms-kubernetes-tools.vscode-kubernetes-tools)](https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools)
@@ -37,14 +41,15 @@
 
 ## Java
 
-- [Language Support for Java(TM) by Red Hat (redhat.java)](https://marketplace.visualstudio.com/items?itemName=redhat.java)
 - [Debugger for Java (vscjava.vscode-java-debug)](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)
-- [Java Test Runner (vscjava.vscode-java-test)](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-test)
-- [Maven for Java (vscjava.vscode-maven)](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-maven)
 - [Java Dependency Viewer (vscjava.vscode-java-dependency)](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-dependency)
+- [Java Test Runner (vscjava.vscode-java-test)](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-test)
+- [Language Support for Java(TM) by Red Hat (redhat.java)](https://marketplace.visualstudio.com/items?itemName=redhat.java)
+- [Maven for Java (vscjava.vscode-maven)](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-maven)
 
 ## JavaScript / TypeScript
 
+- [ESLint (dbaeumer.vscode-eslint)](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - [Prettier - Code formatter (esbenp.prettier-vscode)](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 - [vscode-styled-components (jpoissonnier.vscode-styled-components)](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components)
 - [Debugger for Chrome (msjsdiag.debugger-for-chrome)](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
@@ -55,8 +60,8 @@
 
 ## PHP
 
-- [PHP IntelliSense (felixfbecker.php-intellisense)](https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-intellisense)
 - [PHP Debug (felixfbecker.php-debug)](https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-debug)
+- [PHP IntelliSense (felixfbecker.php-intellisense)](https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-intellisense)
 
 ## PostgreSQL
 
@@ -81,5 +86,6 @@
 ## Misc
 
 - [AutoIt (damien.autoit)](https://marketplace.visualstudio.com/items?itemName=Damien.autoit)
-- [SimulationCraft (mystler.simulationcraft)](https://marketplace.visualstudio.com/items?itemName=Mystler.simulationcraft)
+- [gettext (mrorz.language-gettext)](https://marketplace.visualstudio.com/items?itemName=mrorz.language-gettext)
 - [markdownlint (davidanson.vscode-markdownlint)](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
+- [SimulationCraft (mystler.simulationcraft)](https://marketplace.visualstudio.com/items?itemName=Mystler.simulationcraft)
