@@ -123,6 +123,14 @@ pip freeze | xargs pip uninstall -y
 gpsbabel -i gpx -f INPUT.gpx -x transform,wpt=trk -o gpx -F OUTPUT.gpx
 ```
 
+### Pandoc
+
+#### Convert Markdown to PDF
+
+```bash
+pandoc file.md --pdf-engine=xelatex -V geometry:margin=1.5in -V urlcolor=blue -o file.pdf
+```
+
 ## macOS
 
 ### SimC building
@@ -177,6 +185,25 @@ ulimit -n 2048
 Sometimes macOS keyboard is confused and there is no other choice than deleting `/Library/Preferences/com.apple.keyboardtype.plist` file.
 See: <http://eng.raneri.it/blog/2009/01/17/how-to-reset-the-mac-keyboard/>
 
+### Concat multiple video files (using ffmpeg)
+
+`videos.txt`
+```bash
+file '/path/to/video1.ext'
+file '/path/to/video2.ext'
+file '/path/to/video3.ext'
+```
+
+```bash
+ffmpeg -f concat -safe 0 -i videos.txt -c copy video.ext
+```
+
+### Splitting a zip into multiple parts
+
+```bash
+zip -s 10g 100g-split.zip 100g.zip
+```
+
 ### Unzip multiple archive parts
 
 The easiest way is to cat all of them into a single zip, like this:
@@ -184,6 +211,8 @@ The easiest way is to cat all of them into a single zip, like this:
 ```bash
 cat /path/to/archive-parts/my-archive.zip.001 /path/to/archive-parts/my-archive.zip.002 /path/to/archive-parts/my-archive.zip.003 > my-archive.zip
 ```
+
+If the multi-part was correctly done (i.e. a master .zip), double-clicking on the master .zip should do the trick though.
 
 ### Delete a part of a zip (mostly used to remove the annoying __MACOSX folder)
 

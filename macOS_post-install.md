@@ -256,6 +256,23 @@ brew cask install google-backup-and-sync cryptomator # File synchronization
 brew cask install transmission # Torrent file transfer
 ```
 
+### Video
+```bash
+brew install ffmpeg
+```
+
+### Markdown
+
+```bash
+brew install librsvg
+brew install pandoc
+brew cask install basictex
+
+## Requires password
+sudo tlmgr update --self
+sudo tlmgr install collection-fontsrecommended
+```
+
 ### Manually
 
 - [Audacity](https://www.audacityteam.org/download/mac/)
