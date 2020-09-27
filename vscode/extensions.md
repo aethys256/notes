@@ -88,4 +88,5 @@
 - [AutoIt (damien.autoit)](https://marketplace.visualstudio.com/items?itemName=Damien.autoit)
 - [gettext (mrorz.language-gettext)](https://marketplace.visualstudio.com/items?itemName=mrorz.language-gettext)
 - [markdownlint (davidanson.vscode-markdownlint)](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
+- [Rainbow CSV (mechatroner.rainbow-csv)](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv)
 - [SimulationCraft (mystler.simulationcraft)](https://marketplace.visualstudio.com/items?itemName=Mystler.simulationcraft)
