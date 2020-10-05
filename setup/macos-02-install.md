@@ -1,4 +1,4 @@
-# Post Install Walkthrough (macOS)
+# Setup: macOS Install
 
 ## Introduction
 

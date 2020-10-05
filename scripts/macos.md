@@ -1,4 +1,4 @@
-# Dev Upgrade Utils (macOS)
+# Setup: macOS Upgrade
 
 ## Introduction
 

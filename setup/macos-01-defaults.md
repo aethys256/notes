@@ -1,4 +1,4 @@
-# macOS defaults
+# Setup: macOS defaults
 
 ## Credits
 

@@ -26,7 +26,7 @@
     "typescript.tsserver.maxTsServerMemory": 6144,
     "typescript.updateImportsOnFileMove.enabled": "always",
     "window.zoomLevel": 0,
-    "workbench.colorTheme": "Material Theme High Contrast",
+    "workbench.colorTheme": "Material Theme Darker High Contrast",
     "workbench.iconTheme": "material-icon-theme",
     "workbench.tree.indent": 14,
 }
