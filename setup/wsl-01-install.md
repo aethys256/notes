@@ -25,15 +25,11 @@ Get and launch the distribution from the [Ubuntu 20.04 Microsoft Store](https://
 If you already have Ubuntu 20.04 and you want to start over, you can unregister it and register it again (you loose every data inside).
 Once in the distribution shell, setup the username and password (save it in a credentials manager like KeePass).
 
-## Utils + nodenv + rbenv + pyenv + Java + Android + .NET Core + .bashrc
-
+## Initial setup
 ```bash
 # Ubuntu
 sudo apt update
 sudo apt upgrade -y
-
-# C/C++
-sudo apt install -y build-essential gdb lldb
 
 # Utils
 sudo apt install -y coreutils curl file gawk gnupg
@@ -43,21 +39,58 @@ cat << 'EOF' >> ~/.bashrc
 export PS1="\[\033[35m\]\t\[\033[m\]-\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
 EOF
 
+# Fix Windows drive mounting, cf. https://askubuntu.com/a/1242671
+sudo tee /etc/wsl.conf > /dev/null << 'EOF'
+[automount]
+options = "metadata"
+EOF
+```
+
+Exit every WSL shells and then run `wsl --shutdown` in a PowerShell (or restart the computer).
+
+## cpp + nodenv + rbenv + pyenv + sdkman + Android + .NET Core + Rust
+
+```bash
 # Git
 sudo apt install -y git git-flow git-lfs
 git config --global user.name "Quentin Giraud"
 git config --global user.email "dev@aethys.io"
 cat << 'EOF' >> ~/.bashrc
 
-# Register the SSH private keys from ~/.ssh as identities
-grep -slR "PRIVATE" ~/.ssh | xargs ssh-add &> /dev/null
+# Register the SSH private keys from ~/.ssh as identities, cf. https://stackoverflow.com/a/48509425
+# Ensure agent is running
+ssh-add -l &>/dev/null
+if [ "$?" == 2 ]; then
+    # Could not open a connection to your authentication agent.
+
+    # Load stored agent connection info.
+    test -r ~/.ssh-agent && eval "$(<~/.ssh-agent)" >/dev/null
+
+    ssh-add -l &>/dev/null
+    if [ "$?" == 2 ]; then
+        # Start agent and store agent connection info.
+        (umask 066; ssh-agent > ~/.ssh-agent)
+        eval "$(<~/.ssh-agent)" >/dev/null
+    fi
+fi
+# Load identities
+ssh-add -l &>/dev/null
+if [ "$?" == 1 ]; then
+    # The agent has no identities.
+    grep -slR "PRIVATE" ~/.ssh | xargs ssh-add &> /dev/null
+fi
 EOF
 # DO NOT FORGET TO PUT THE SSH KEYS IN the '~/.ssh' FOLDER (import from KeePass or generate them)
+# cp /mnt/c/Users/Aethys/Documents/ssh/aethys256-GitHub ~/.ssh/aethys256-GitHub
+# chmod 600 ~/.ssh/aethys256-GitHub
+# cp /mnt/c/Users/Aethys/Documents/ssh/aethys256-GitHub.pub ~/.ssh/aethys256-GitHub.pub
+# chmod 600 ~/.ssh/aethys256-GitHub.pub
 
-# Reload the shell
-exec $SHELL
+# C/C++
+sudo apt install -y build-essential gdb lldb
 
 # Node - nodenv
+sudo apt-get install g++ make python python3-distutils
 curl -fsSL https://github.com/nodenv/nodenv-installer/raw/master/bin/nodenv-installer | bash
 cat << 'EOF' >> ~/.bashrc
 
@@ -102,6 +135,7 @@ npmScopes:
 EOF
 
 # Ruby - rbenv
+sudo apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
 cat << 'EOF' >> ~/.bashrc
 
@@ -129,7 +163,7 @@ alias pyenv-stable-latest="pyenv-stable-list | tail -1"
 alias pyenv-stable-previous="pyenv-stable-list | tail -2 | head -1"
 EOF
 
-# Java (Scala, Gradle, ...) - SDKMAN
+# Java (+ Scala, Gradle, ...) - SDKMAN
 sudo apt-get install -y curl sed unzip zip
 curl -fsSL "https://get.sdkman.io?rcupdate=false" | bash
 cat << 'EOF' >> ~/.bashrc
@@ -170,7 +204,7 @@ EOF
 exec $SHELL
 ```
 
-## Install nodenv plugins + Node + rbenv plugins + Ruby + pyenv plugins + Python + Java
+## Install Node + Ruby + Python + Java
 
 ```bash
 # nodenv plugins + Node

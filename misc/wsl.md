@@ -17,3 +17,9 @@ wsl --setdefault Ubuntu-20.04
 ```powershell
 wsl --unregister Ubuntu-20.04
 ```
+
+## Terminate a distribution
+
+```powershell
+wslconfig /t Ubuntu-20.04
+```

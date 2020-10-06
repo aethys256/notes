@@ -1,26 +1,18 @@
 # Microsoft Visual Studio Code Extensions
 
 Any extension prefixed by \[WSL] is meant to be installed on WSL rather than locally if you are using it.
+This does not matter for macOS / Linux.
 
-## Tools
+## UI
 
-- [Copy Relative Path and Line Numbers (ezforo.copy-relative-path-and-line-numbers)](https://marketplace.visualstudio.com/items?itemName=ezforo.copy-relative-path-and-line-numbers)
-- \[WSL] [DotENV (mikestead.dotenv)](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv)
+- \[WSL] [Copy Relative Path and Line Numbers (ezforo.copy-relative-path-and-line-numbers)](https://marketplace.visualstudio.com/items?itemName=ezforo.copy-relative-path-and-line-numbers)
 - \[WSL] [EditorConfig for VS Code (editorconfig.editorconfig)](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
 - \[WSL] [GitLens — Git supercharged (eamodio.gitlens)](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
-- [Live Share (ms-vsliveshare.vsliveshare)](https://marketplace.visualstudio.com/items?itemName=ms-vsliveshare.vsliveshare)
-- [Log File Highlighter (emilast.logfilehighlighter)](https://marketplace.visualstudio.com/items?itemName=emilast.LogFileHighlighter)
-- [Material Theme Icons (equinusocio.vsc-material-theme-icons)](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme-icons)
-- [Material Theme (equinusocio.vsc-community-material-theme)](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme)
+- \[WSL] [Live Share (ms-vsliveshare.vsliveshare)](https://marketplace.visualstudio.com/items?itemName=ms-vsliveshare.vsliveshare)
+- [Material Icon Theme (pkief.material-icon-theme)](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
+- [Material Theme (equinusocio.vsc-material-theme)](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme) (Uninstall [Community Material Theme (equinusocio.vsc-community-material-theme)](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-community-material-theme) & [Material Theme Icons (equinusocio.vsc-material-theme-icons)](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme-icons) that are installed as Pack)
 - [Remote Development (ms-vscode-remote.vscode-remote-extensionpack)](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
-- [Terminals Manager (fabiospampinato.vscode-terminals)](https://marketplace.visualstudio.com/items?itemName=fabiospampinato.vscode-terminals)
-- [Visual Studio IntelliCode (visualstudioexptteam.vscodeintellicode)](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
-
-## DevOps
-
-- [Azure Pipelines (ms-azure-devops.azure-pipelines)](https://marketplace.visualstudio.com/items?itemName=ms-azure-devops.azure-pipelines)
-- [Docker (ms-azuretools.vscode-docker)](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
-- [PowerShell (ms-vscode.powershell)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)
+- \[WSL] [Terminals Manager (fabiospampinato.vscode-terminals)](https://marketplace.visualstudio.com/items?itemName=fabiospampinato.vscode-terminals)
 
 ## C/C++
 
@@ -29,7 +21,6 @@ Any extension prefixed by \[WSL] is meant to be installed on WSL rather than loc
 ## C Sharp
 
 - \[WSL] [C# (ms-vscode.csharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
-- [Debugger for Unity (unity.unity-debug)](https://marketplace.visualstudio.com/items?itemName=Unity.unity-debug)
 
 ## GraphQL
 
@@ -44,11 +35,8 @@ Any extension prefixed by \[WSL] is meant to be installed on WSL rather than loc
 
 ## Lua
 
+- \[WSL] [Lua (sumneko.lua)](https://marketplace.visualstudio.com/items?itemName=sumneko.lua)
 - [WoW Bundle (septh.wow-bundle)](https://marketplace.visualstudio.com/items?itemName=Septh.wow-bundle)
-
-## PostgreSQL
-
-- \[WSL] [PostgreSQL (ms-ossdata.vscode-postgresql)](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql)
 
 ## Python
 
@@ -63,13 +51,19 @@ Any extension prefixed by \[WSL] is meant to be installed on WSL rather than loc
 
 - \[WSL] [Rust (rls) (rust-lang.rust)](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust)
 
-## YAML
-
-- \[WSL] [YAML (redhat.vscode-yaml)](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
-
 ## Misc
 
 - \[WSL] [AutoIt (damien.autoit)](https://marketplace.visualstudio.com/items?itemName=Damien.autoit)
-- [gettext (mrorz.language-gettext)](https://marketplace.visualstudio.com/items?itemName=mrorz.language-gettext)
+- [DotENV (mikestead.dotenv)](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv)
+- \[WSL] [gettext (mrorz.language-gettext)](https://marketplace.visualstudio.com/items?itemName=mrorz.language-gettext)
+- [Log File Highlighter (emilast.logfilehighlighter)](https://marketplace.visualstudio.com/items?itemName=emilast.LogFileHighlighter)
 - \[WSL] [markdownlint (davidanson.vscode-markdownlint)](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
 - [SimulationCraft (mystler.simulationcraft)](https://marketplace.visualstudio.com/items?itemName=Mystler.simulationcraft)
+- \[WSL] [Visual Studio IntelliCode (visualstudioexptteam.vscodeintellicode)](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
+- \[WSL] [YAML (redhat.vscode-yaml)](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
+
+## DevOps
+
+- \[WSL] [Azure Pipelines (ms-azure-devops.azure-pipelines)](https://marketplace.visualstudio.com/items?itemName=ms-azure-devops.azure-pipelines) (will also install [Azure Account (ms-vscode.azure-account)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account))
+- [Docker (ms-azuretools.vscode-docker)](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
+- [PowerShell (ms-vscode.powershell)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)
