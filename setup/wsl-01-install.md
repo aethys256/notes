@@ -91,13 +91,13 @@ sudo apt install -y build-essential gdb lldb
 
 # Node - nodenv
 sudo apt-get install g++ make python python3-distutils
-curl -fsSL https://github.com/nodenv/nodenv-installer/raw/master/bin/nodenv-installer | bash
+curl -fsSL https://raw.githubusercontent.com/nodenv/nodenv-installer/master/bin/nodenv-installer | bash
 cat << 'EOF' >> ~/.bashrc
 
 # nodenv
 export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
-alias nodenv-stable-list="nodenv install --list | grep -v '\-\|nightly\|dev\|next\|a\|b\|rc' | awk '{\$1=\$1};1' | grep '^12.'"
+alias nodenv-stable-list="nodenv install --list | grep -v '\-\|nightly\|dev\|next\|a\|b\|rc' | awk '{\$1=\$1};1' | grep '^14.'"
 alias nodenv-stable-latest="nodenv-stable-list | tail -1"
 alias nodenv-stable-previous="nodenv-stable-list | tail -2 | head -1"
 EOF
@@ -136,7 +136,7 @@ EOF
 
 # Ruby - rbenv
 sudo apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev
-curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
+curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
 cat << 'EOF' >> ~/.bashrc
 
 # rbenv
@@ -155,10 +155,11 @@ curl -fsSL https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-install
 cat << 'EOF' >> ~/.bashrc
 
 # pyenv
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
-alias pyenv-stable-list="pyenv install --list | grep -v '\-\|nightly\|dev\|next\|a\|b\|rc' | awk '{\$1=\$1};1' | grep '^3.8'"
+alias pyenv-stable-list="pyenv install --list | grep -v '\-\|nightly\|dev\|next\|a\|b\|rc' | awk '{\$1=\$1};1' | grep '^3.9'"
 alias pyenv-stable-latest="pyenv-stable-list | tail -1"
 alias pyenv-stable-previous="pyenv-stable-list | tail -2 | head -1"
 EOF
@@ -234,7 +235,7 @@ printf "rbenv versions:\n" && rbenv versions && printf "\nrbenv --version: $(rbe
 # Python & Pip
 git clone https://github.com/pyenv/pyenv-pip-migrate.git "$(pyenv root)/plugins/pyenv-pip-migrate"
 pyenv install $(pyenv-stable-latest)
-pyenv global $(pyenv-stable-latest) $(pyenv-stable-latest)
+pyenv global $(pyenv-stable-latest)
 pyenv rehash
 pip install --upgrade pip
 pyenv rehash

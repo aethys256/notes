@@ -1,6 +1,6 @@
 # Scripts: HeroDamage
 
-Those scripts are meant to be run on Debian WSL which is the distribution I use to run HeroDamage simulations.  
+Those scripts are meant to be run on Debian WSL which is the distribution I use to run HeroDamage simulations.
 Technically it can be adapted to work on any Linux distributions.
 
 ## Debian Install
@@ -103,7 +103,7 @@ gem install bundler
 cat << 'EOF' > ~/upgrade.sh
 #!/bin/bash
 
-curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash > /dev/null
+curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash > /dev/null
 yes n | rbenv install $(rbenv-stable-latest)
 rbenv global $(rbenv-stable-latest)
 yes | rbenv uninstall $(rbenv-stable-previous)
@@ -124,10 +124,19 @@ chmod +x ~/upgrade.sh
 ```
 
 ### Commands
+
+#### Update
+
 ```bash
 sudo apt update
 sudo apt upgrade -y
 . ~/upgrade.sh
+```
+
+#### Uninstall rubyenv version
+
+```bash
+yes | rbenv uninstall XXX
 ```
 
 ## SimC & SimCScripts
@@ -135,6 +144,7 @@ sudo apt upgrade -y
 ### Initial setup
 
 Choose a folder where the structure will be :
+
 - simc
 - simcscripts
 - clean.sh
@@ -144,21 +154,23 @@ Choose a folder where the structure will be :
 In my case it is `/mnt/c/Users/Aethys/Documents/herodamage/xxx`, where `xxx` is the version of HD (`legion`, `bfa`, `shadowlands`, ...).
 
 ```bash
-
 # Legion
 git clone -b legion-dev https://github.com/simulationcraft/simc.git simc
 chmod +x ./simc/generate_profiles.sh
 git clone -b legion https://github.com/Ravenholdt-TC/SimcScripts.git simcscripts
+git clone -b master https://github.com/herotc/legion.herodamage.com.git herodamage.com
 
 # Battle for Azeroth
 git clone -b bfa-dev https://github.com/simulationcraft/simc.git simc
 chmod +x ./simc/generate_profiles.sh
 git clone -b bfa https://github.com/Ravenholdt-TC/SimcScripts.git simcscripts
+git clone -b master https://github.com/herotc/bfa.herodamage.com.git herodamage.com
 
 # Shadowlands
 git clone -b shadowlands https://github.com/simulationcraft/simc.git simc
 chmod +x ./simc/generate_profiles.sh
 git clone -b master https://github.com/Ravenholdt-TC/SimcScripts.git simcscripts
+git clone -b master https://github.com/herotc/shadowlands.herodamage.com.git herodamage.com
 ```
 
 Create the `SimcConfig.yml` file using `simcscripts/SimcConfig_Example.yml`.
@@ -178,6 +190,11 @@ git pull
 make -C engine -j $(expr $(cat /proc/cpuinfo | grep processor | wc -l) / 2) SC_NO_NETWORKING=1 LTO=1 optimized
 cp engine/simc simc
 ./generate_profiles.sh
+
+cd ${BASE_DIR}/herodamage.com/
+git clean -xdf
+git reset --hard
+git pull
 
 cd ${BASE_DIR}/simcscripts/
 git pull
