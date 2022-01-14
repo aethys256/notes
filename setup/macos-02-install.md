@@ -231,29 +231,29 @@ brew install watchman # Needed by Prisma GraphQL Extension for VSCode
 
 ```bash
 ### Essentials ###
-brew cask install google-chrome firefox # Browsers
-brew cask install keepassxc # Password manager
-brew cask install visual-studio-code jetbrains-toolbox # IDEs
-brew cask install sourcetree # Git GUI client
-brew cask install postman # ADE
-brew cask install pgadmin4 # PostgreSQL management
-brew cask install cyberduck # File transfer
-brew cask install slack skype # Messaging
-brew cask install vlc # Multimedia player
-brew cask install the-unarchiver # Archive utility
-brew cask install onyx # System utility
-brew cask install symboliclinker # Symbolic link in context menu
-brew cask install spectacle # Window management app
-brew cask install scroll-reverser # Reverse mouse while keeping natural for trackpad
+brew install --cask google-chrome firefox # Browsers
+brew install --cask keepassxc # Password manager
+brew install --cask visual-studio-code jetbrains-toolbox # IDEs
+brew install --cask sourcetree # Git GUI client
+brew install --cask postman # ADE
+brew install --cask pgadmin4 # PostgreSQL management
+brew install --cask cyberduck # File transfer
+brew install --cask slack skype # Messaging
+brew install --cask vlc # Multimedia player
+brew install --cask the-unarchiver # Archive utility
+brew install --cask onyx # System utility
+brew install --cask symboliclinker # Symbolic link in context menu
+brew install --cask spectacle # Window management app
+brew install --cask scroll-reverser # Reverse mouse while keeping natural for trackpad
 
 ## Requires password
-brew cask install adobe-air flash-npapi flash-ppapi # Adobe Air & Flash Player NPAPI (Safari & Firefox) & Flash Player PPAPI (Chromium & Opera)
-brew cask install teamviewer chrome-remote-desktop-host # Screen sharing
+brew install --cask adobe-air flash-npapi flash-ppapi # Adobe Air & Flash Player NPAPI (Safari & Firefox) & Flash Player PPAPI (Chromium & Opera)
+brew install --cask teamviewer chrome-remote-desktop-host # Screen sharing
 
 
 ### Others ###
-brew cask install google-backup-and-sync cryptomator # File synchronization
-brew cask install transmission # Torrent file transfer
+brew install --cask google-backup-and-sync cryptomator # File synchronization
+brew install --cask transmission # Torrent file transfer
 ```
 
 ### Video
@@ -266,7 +266,7 @@ brew install ffmpeg
 ```bash
 brew install librsvg
 brew install pandoc
-brew cask install basictex
+brew install --cask basictex
 
 ## Requires password
 sudo tlmgr update --self
@@ -294,15 +294,15 @@ sudo tlmgr install collection-fontsrecommended
 ### Hackintosh only
 
 ```bash
-brew cask install clover-configurator # EFI Bootloader configurator
+brew install --cask clover-configurator # EFI Bootloader configurator
 ```
 
 ### Others
 
 ```bash
-brew cask install istat-menus # Hardware monitoring, free alternative: yujitach-menumeters
-brew cask install db-browser-for-sqlite # Popular browser for SQLite
+brew install --cask istat-menus # Hardware monitoring, free alternative: yujitach-menumeters
+brew install --cask db-browser-for-sqlite # Popular browser for SQLite
 
 ## Requires password
-brew cask install xquartz inkscape # Vector image edition
+brew install --cask xquartz inkscape # Vector image edition
 ```
