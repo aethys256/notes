@@ -97,7 +97,7 @@ cat << 'EOF' >> ~/.bashrc
 # nodenv
 export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
-alias nodenv-stable-list="nodenv install --list | grep -v '\-\|nightly\|dev\|next\|a\|b\|rc' | awk '{\$1=\$1};1' | grep '^14.'"
+alias nodenv-stable-list="nodenv install --list | grep -v '\-\|nightly\|dev\|next\|a\|b\|rc' | awk '{\$1=\$1};1' | grep '^16.'"
 alias nodenv-stable-latest="nodenv-stable-list | tail -1"
 alias nodenv-stable-previous="nodenv-stable-list | tail -2 | head -1"
 EOF
@@ -142,7 +142,7 @@ cat << 'EOF' >> ~/.bashrc
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
-alias rbenv-stable-list="rbenv install --list-all | grep -v '\-\|nightly\|dev\|next\|a\|b\|rc' | awk '{\$1=\$1};1' | grep '^2.7'"
+alias rbenv-stable-list="rbenv install --list-all | grep -v '\-\|nightly\|dev\|next\|a\|b\|rc' | awk '{\$1=\$1};1' | grep '^3.1'"
 alias rbenv-stable-latest="rbenv-stable-list | tail -1"
 alias rbenv-stable-previous="rbenv-stable-list | tail -2 | head -1"
 EOF
@@ -159,7 +159,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
-alias pyenv-stable-list="pyenv install --list | grep -v '\-\|nightly\|dev\|next\|a\|b\|rc' | awk '{\$1=\$1};1' | grep '^3.9'"
+alias pyenv-stable-list="pyenv install --list | grep -v '\-\|nightly\|dev\|next\|a\|b\|rc' | awk '{\$1=\$1};1' | grep '^3.10'"
 alias pyenv-stable-latest="pyenv-stable-list | tail -1"
 alias pyenv-stable-previous="pyenv-stable-list | tail -2 | head -1"
 EOF
