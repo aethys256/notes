@@ -1,6 +1,12 @@
-## Ubuntu Update
+# Scripts: WSL Ubuntu Upgrade
 
-### Script
+## Introduction
+
+These are my personal WSL Ubutu dev-upgrades notes. Feel free to pick-up whatever you might need.
+Before starting, remember that those commands are related to my setup, see `wsl-01-install` for more info.
+
+## Script
+
 ```bash
 cat << 'EOF' > ~/upgrade.sh
 #!/bin/bash
@@ -66,9 +72,9 @@ EOF
 chmod +x ~/upgrade.sh
 ```
 
-### Commands
+## Commands
 
-#### Update
+### Update
 
 ```bash
 sudo apt update
@@ -76,19 +82,19 @@ sudo apt upgrade -y
 . ~/upgrade.sh
 ```
 
-#### Uninstall nodenv version
+### Uninstall nodenv version
 
 ```bash
 yes | nodenv uninstall XXX
 ```
 
-#### Uninstall rubyenv version
+### Uninstall rubyenv version
 
 ```bash
 yes | rbenv uninstall XXX
 ```
 
-#### Uninstall pyenv version
+### Uninstall pyenv version
 
 ```bash
 yes | pyenv uninstall XXX

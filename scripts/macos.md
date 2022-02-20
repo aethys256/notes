@@ -1,13 +1,11 @@
-# Setup: macOS Upgrade
+# Scripts: macOS Upgrade
 
 ## Introduction
 
 These are my personal macOS dev-upgrades notes. Feel free to pick-up whatever you might need.
-Before starting, remember that those commands are related to my setup, see `macOS_post-install` for more infos.
+Before starting, remember that those commands are related to my setup, see `macos-02-install` for more info.
 
-## AIO
-
-### Script
+## Script
 
 ```bash
 cat << 'EOF' > ~/aio-upgrade.sh
@@ -48,13 +46,13 @@ EOF
 chmod +x ~/aio-upgrade.sh
 ```
 
-### Command to call the script
+## Commands
+
+### Update
 
 ```bash
 ~/aio-upgrade.sh
 ```
-
-## macOS
 
 ### Upgrade brew & casks
 
@@ -62,8 +60,6 @@ chmod +x ~/aio-upgrade.sh
 brew update && brew upgrade && brew cask upgrade && brew cleanup
 brew --version
 ```
-
-## Node
 
 ### Upgrade Node & Node LTS w/ npm
 
@@ -76,8 +72,6 @@ export NVM_VERSION_CURRENT_NODE=$(nvm version node)
 export NVM_VERSION_CURRENT_LTS=$(nvm version lts/*)
 nvm list && echo "nvm: $(nvm --version)" && echo "node: $(node --version)" && echo "npm: $(npm --version)"
 ```
-
-## Ruby
 
 ### Upgrade RVM & Ruby & Gems
 
@@ -93,8 +87,6 @@ rvm list && rvm --version && ruby --version && bundler --version
 ```bash
 bundle update
 ```
-
-## Python
 
 ### Upgrade Python
 
