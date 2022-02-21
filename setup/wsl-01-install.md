@@ -266,7 +266,7 @@ pip install setuptools # hero-rotation-generator
 pip install pylint # linter used by IDEs
 
 # Markdown
-sudo apt-get install -y pandoc texlive texlive-latex-recommended
+sudo apt-get install -y pandoc texlive texlive-latex-recommended texlive-full
 
 # AWS CLI
 sudo apt-get install -y unzip
