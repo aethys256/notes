@@ -12,7 +12,7 @@ Before starting, remember that those commands are related to my setup, see `wsl-
 sudo apt update
 
 # ffmpeg
-sudo apt install -y ffmpeg
+sudo apt install -y ffmpeg exiftool
 
 # Python package: mutagen
 pip install mutagen

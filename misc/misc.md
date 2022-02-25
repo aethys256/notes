@@ -128,3 +128,30 @@ gpsbabel -i gpx -f INPUT.gpx -x transform,wpt=trk -o gpx -F OUTPUT.gpx
 ```bash
 pandoc file.md --pdf-engine=xelatex -V geometry:margin=1.5in -V urlcolor=blue -o file.pdf
 ```
+
+## FFmpeg
+
+### 360 Video
+
+```bash
+# Credits: https://headjack.io/blog/360-video-cloud-encoding-profiles/
+
+# PC (VR Headset)
+ffmpeg -i "monoscopic_video.mp4" -c:v libx264 -crf 18 -x264-params "mvrange=511" -maxrate 120M -bufsize 150M -vf "scale=5760x2880" -pix_fmt yuv420p -c:a aac -b:a 192k -r 30 -movflags faststart "monoscopic_output.mp4"
+ffmpeg -i "stereoscopic_video.mp4" -c:v libx265 -crf 17 -maxrate 120M -bufsize 150M -vf "scale=4096x4096" -pix_fmt yuv420p -c:a aac -b:a 192k -r 30 -movflags faststart "stereoscopic_output.mp4"
+
+# Mobile (Cardboard / Autonomous VR Headset): up to 3840×2160 for Stereo
+ffmpeg -i "monoscopic_video.mp4" -c:v libx265 -crf 17 -maxrate 80M -bufsize 100M -vf "scale=4096x2048" -pix_fmt yuv420p -c:a aac -b:a 192k -r 30 -movflags faststart "monoscopic_output.mp4"
+
+# Stream: use Mobile for Mono
+ffmpeg -i "stereoscopic_video.mp4" -c:v libx265 -crf 20 -x265-params "keyint=60:min-keyint=60" -maxrate 25M -bufsize 35M -vf "scale=3840x2160" -pix_fmt yuv420p -c:a aac -b:a 192k -r 30 -g 60 "stereoscopic_output.mp4"
+
+# WebVR: no Stereo
+ffmpeg -i "monoscopic_video.mp4" -c:v libx264 -crf 21 -maxrate 10M -bufsize 15M -vf "scale=1920x1080" -pix_fmt yuv420p -c:a aac -b:a 192k -r 30 -g 60 -keyint_min 60 "monoscopic_output.mp4"
+```
+
+### Copy metadata
+
+```bash
+exiftool -api largefilesupport=1 -tagsFromFile "source.mov" -all:all "destination.mp4"
+```

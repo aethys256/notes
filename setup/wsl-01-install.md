@@ -268,6 +268,9 @@ pip install pylint # linter used by IDEs
 # Markdown
 sudo apt-get install -y pandoc texlive texlive-latex-recommended texlive-full
 
+# NCurses Disk Usage
+sudo apt-get install -y ncdu
+
 # AWS CLI
 sudo apt-get install -y unzip
 curl -fsSL https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o ~/awscliv2.zip
