@@ -2,8 +2,8 @@
 
 ## Introduction
 
-These are my personal macOS dev-upgrades notes. Feel free to pick-up whatever you might need.
-Before starting, remember that those commands are related to my setup, see `macos-02-install` for more info.
+These are my personal macOS dev-upgrades notes. Feel free to pick-up whatever you might need.\
+Before starting, remember that those commands are related to my setup, see `macos` for more info.
 
 ## Script
 

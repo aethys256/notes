@@ -1,13 +1,13 @@
-# Setup: WSL Install
+# Setup: WSL
 
 ## Introduction
 
-These are my personal Windows WSL post-install notes, using Ubuntu distribution. Feel free to pick-up whatever you might need.
+These are my personal Windows WSL post-install notes, using Ubuntu distribution. Feel free to pick-up whatever you might need.\
 Before starting, do not forget to update Windows to the latest update.
 
 ## Install WSL2 & Ubuntu 20.04
 
-This is how I setup my development environment. This is assuming a pristine Windows installation but you might attempt it on an already used one.
+This is how I setup my development environment. This is assuming a pristine Windows installation but you might attempt it on an already used one.\
 Follow instructions from this [official documentation](https://docs.microsoft.com/en-us/windows/wsl/install-win10) in order to get WSL2.
 
 TL;DR:
@@ -21,8 +21,8 @@ Restart.
 wsl --set-default-version 2
 ```
 
-Get and launch the distribution from the [Ubuntu 20.04 Microsoft Store](https://www.microsoft.com/store/apps/9n6svws3rx71) page.
-If you already have Ubuntu 20.04 and you want to start over, you can unregister it and register it again (you loose every data inside).
+Get and launch the distribution from the [Ubuntu 20.04 Microsoft Store](https://www.microsoft.com/store/apps/9n6svws3rx71) page.\
+If you already have Ubuntu 20.04 and you want to start over, you can unregister it and register it again (you loose every data inside).\
 Once in the distribution shell, setup the username and password (save it in a credentials manager like KeePass).
 
 ## Initial setup

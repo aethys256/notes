@@ -5,7 +5,7 @@
 - <https://github.com/mathiasbynens/dotfiles/blob/master/.macos>
 - <https://github.com/joeyhoer/starter>
 
-It's possible that some of them needs to be done manually (there are some `TODO` remaining).
+It's possible that some of them needs to be done manually (there are some `TODO` remaining).\
 Once it'll be a bit more complete, I'll probably make an unattended script.
 
 ## General

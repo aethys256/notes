@@ -1,9 +1,11 @@
-# Microsoft Visual Studio Code Extensions
+# Setup: Microsoft Visual Studio Code
 
-Any extension prefixed by \[WSL] is meant to be installed on WSL rather than locally if you are using it.
+## Extensions
+
+Any extension prefixed by \[WSL] is meant to be installed on WSL rather than locally if you are using it.\
 This does not matter for macOS / Linux.
 
-## UI
+### UI
 
 - \[WSL] [Copy Relative Path and Line Numbers (ezforo.copy-relative-path-and-line-numbers)](https://marketplace.visualstudio.com/items?itemName=ezforo.copy-relative-path-and-line-numbers)
 - \[WSL] [EditorConfig for VS Code (editorconfig.editorconfig)](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
@@ -14,44 +16,44 @@ This does not matter for macOS / Linux.
 - [Remote Development (ms-vscode-remote.vscode-remote-extensionpack)](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
 - \[WSL] [Terminals Manager (fabiospampinato.vscode-terminals)](https://marketplace.visualstudio.com/items?itemName=fabiospampinato.vscode-terminals)
 
-## C/C++
+### C/C++
 
 - \[WSL] [C/C++ (ms-vscode.cpptools)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
 
-## C Sharp
+### C Sharp
 
 - \[WSL] [C# (ms-vscode.csharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
 
-## GraphQL
+### GraphQL
 
 - \[WSL] [GraphQL (graphql.vscode-graphql)](https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql)
 
-## JavaScript / TypeScript
+### JavaScript / TypeScript
 
 - \[WSL] [ESLint (dbaeumer.vscode-eslint)](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - \[WSL] [Prettier - Code formatter (esbenp.prettier-vscode)](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 - \[WSL] [vscode-styled-components (jpoissonnier.vscode-styled-components)](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components)
 - \[WSL] [Debugger for Chrome (msjsdiag.debugger-for-chrome)](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
 
-## Lua
+### Lua
 
 - \[WSL] [Lua (sumneko.lua)](https://marketplace.visualstudio.com/items?itemName=sumneko.lua)
 - [WoW Bundle (septh.wow-bundle)](https://marketplace.visualstudio.com/items?itemName=Septh.wow-bundle)
 
-## Python
+### Python
 
 - \[WSL] [Python (ms-python.python)](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 - \[WSL] [Pylance (ms-python.vscode-pylance)](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
 
-## Ruby
+### Ruby
 
 - \[WSL] [Ruby (rebornix.ruby)](https://marketplace.visualstudio.com/items?itemName=rebornix.Ruby) (will also install [VSCode Ruby (wingrunr21.vscode-ruby)](https://marketplace.visualstudio.com/items?itemName=wingrunr21.vscode-ruby))
 
-## Rust
+### Rust
 
 - \[WSL] [Rust (rls) (rust-lang.rust)](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust)
 
-## Misc
+### Misc
 
 - \[WSL] [AutoIt (damien.autoit)](https://marketplace.visualstudio.com/items?itemName=Damien.autoit)
 - [DotENV (mikestead.dotenv)](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv)
@@ -62,8 +64,103 @@ This does not matter for macOS / Linux.
 - \[WSL] [Visual Studio IntelliCode (visualstudioexptteam.vscodeintellicode)](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
 - \[WSL] [YAML (redhat.vscode-yaml)](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
 
-## DevOps
+### DevOps
 
 - \[WSL] [Azure Pipelines (ms-azure-devops.azure-pipelines)](https://marketplace.visualstudio.com/items?itemName=ms-azure-devops.azure-pipelines) (will also install [Azure Account (ms-vscode.azure-account)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account))
 - [Docker (ms-azuretools.vscode-docker)](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
 - [PowerShell (ms-vscode.powershell)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)
+
+## settings.json
+
+```json
+{
+    "diffEditor.renderSideBySide": true,
+    "editor.fontSize": 14,
+    "editor.renderWhitespace": "boundary",
+    "editor.semanticHighlighting.enabled": true,
+    "editor.suggestSelection": "first",
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    "eslint.packageManager": "yarn",
+    "explorer.confirmDragAndDrop": false,
+    "files.autoSave": "onFocusChange",
+    "git.allowForcePush": true,
+    "git.allowNoVerifyCommit": true,
+    "git.autofetch": true,
+    "git.branchSortOrder": "alphabetically",
+    "git.confirmForcePush": false,
+    "git.confirmNoVerifyCommit": false,
+    "git.confirmSync": false,
+    "git.fetchOnPull": true,
+    "git.rebaseWhenSync": true,
+    "git.showPushSuccessNotification": true,
+    "git.suggestSmartCommit": false,
+    "gitlens.codeLens.enabled": false,
+    "gitlens.showWelcomeOnInstall": false,
+    "gitlens.showWhatsNewAfterUpgrades": false,
+    "javascript.suggest.completeFunctionCalls": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "Lua.runtime.version": "Lua 5.1",
+    "Lua.telemetry.enable": false,
+    "Lua.workspace.maxPreload": 1000000,
+    "Lua.workspace.preloadFileSize": 10000,
+    "material-icon-theme.activeIconPack": "react_redux",
+    "npm.packageManager": "yarn",
+    "python.languageServer": "Pylance",
+    "redhat.telemetry.enabled": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "telemetry.telemetryLevel": "off",
+    "typescript.locale": "en",
+    "typescript.suggest.completeFunctionCalls": true,
+    "typescript.tsserver.maxTsServerMemory": 6144,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.colorTheme": "Material Theme Darker High Contrast",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.tree.indent": 14,
+    "[html]": {
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": true
+        },
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[javascript]": {
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": true
+        },
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[javascriptreact]": {
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": true
+        },
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[markdown]": {
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": true
+        },
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[typescript]": {
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": true
+        },
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[typescriptreact]": {
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": true
+        },
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[vue]": {
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": true
+        },
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+}
+```

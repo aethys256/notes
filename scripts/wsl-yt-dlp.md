@@ -2,8 +2,8 @@
 
 ## Introduction
 
-These are my personal WSL Ubuntu yt-dlp notes. Feel free to pick-up whatever you might need.
-Before starting, remember that those commands are related to my setup, see `wsl-01-install` for more info.
+These are my personal WSL Ubuntu yt-dlp notes. Feel free to pick-up whatever you might need.\
+Before starting, remember that those commands are related to my setup, see `wsl` for more info.
 
 ## Script
 

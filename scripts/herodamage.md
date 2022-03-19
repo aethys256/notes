@@ -1,6 +1,6 @@
 # Scripts: HeroDamage
 
-Those scripts are meant to be run on Debian WSL which is the distribution I use to run HeroDamage simulations.
+Those scripts are meant to be run on Debian WSL which is the distribution I use to run HeroDamage simulations.\
 Technically it can be adapted to work on any Linux distributions.
 
 ## Debian Install

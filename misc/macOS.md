@@ -51,7 +51,7 @@ ulimit -n 2048
 
 ## Keyboard reset
 
-Sometimes macOS keyboard is confused and there is no other choice than deleting `/Library/Preferences/com.apple.keyboardtype.plist` file.
+Sometimes macOS keyboard is confused and there is no other choice than deleting `/Library/Preferences/com.apple.keyboardtype.plist` file.\
 See: <http://eng.raneri.it/blog/2009/01/17/how-to-reset-the-mac-keyboard/>
 
 ## Concat multiple video files (using ffmpeg)

@@ -1,13 +1,13 @@
-# Setup: macOS Install
+# Setup: macOS
 
 ## Introduction
 
-These are my personal macOS post-install notes. Feel free to pick-up whatever you might need.
+These are my personal macOS post-install notes. Feel free to pick-up whatever you might need.\
 Before starting, do not forget to update macOS to the latest update thanks to the App Store.
 
 ## macOS defaults
 
-Refer to `macOS_defaults` instructions.
+Refer to `macOS-defaults` instructions.
 
 ## Dev Environment
 
@@ -15,7 +15,7 @@ Here is how I setup my development environment.
 
 ### Install XCode / XCode Command Line Tools
 
-I do use XCode that's why, if you use it just for the CLI, homebrew will install it for you.
+I do use XCode that's why, if you use it just for the CLI, homebrew will install it for you.\
 Once it's installed, `reboot` then do:
 
 ```bash
