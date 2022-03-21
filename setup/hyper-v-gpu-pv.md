@@ -60,8 +60,8 @@ Here are my edited values for reference:
 VMName = "MercuryVM"
 SourcePath = "C:\Users\Aethys\Downloads\Win10_21H2_EnglishInternational_x64.iso"
 SizeBytes = 80GB
-MemoryAmount = 8GB
-CPUCores = 4
+MemoryAmount = 12GB
+CPUCores = 6
 NetworkSwitch = "Bridge-Asus-Intel"
 VHDPath = "C:\Users\Aethys\Documents\Virtual Machines\"
 GPUName = "AUTO"
@@ -100,3 +100,28 @@ We will use Parsec but through a Virtual Display Adapter so when we disconnect f
 
 Install your applications and have fun.\
 Do not forget to activate Windows.
+
+## Update the Resource Allocation Percentage
+
+1) Shutdown the VM
+2) Open a PowerShell console as Administrator
+3) Run the following command:
+
+```powershell
+# Update those values to match your need
+[string]$VMName = "MercuryVM"
+[decimal]$GPUResourceAllocationPercentage = 35
+
+[float]$divider = [math]::round($(100 / $GPUResourceAllocationPercentage), 2)
+
+Set-VMGpuPartitionAdapter -VMName $VMName -MinPartitionVRAM ([math]::round($(1000000000 / $divider))) -MaxPartitionVRAM ([math]::round($(1000000000 / $divider))) -OptimalPartitionVRAM ([math]::round($(1000000000 / $divider)))
+Set-VMGPUPartitionAdapter -VMName $VMName -MinPartitionEncode ([math]::round($(18446744073709551615 / $divider))) -MaxPartitionEncode ([math]::round($(18446744073709551615 / $divider))) -OptimalPartitionEncode ([math]::round($(18446744073709551615 / $divider)))
+Set-VMGpuPartitionAdapter -VMName $VMName -MinPartitionDecode ([math]::round($(1000000000 / $divider))) -MaxPartitionDecode ([math]::round($(1000000000 / $divider))) -OptimalPartitionDecode ([math]::round($(1000000000 / $divider)))
+Set-VMGpuPartitionAdapter -VMName $VMName -MinPartitionCompute ([math]::round($(1000000000 / $divider))) -MaxPartitionCompute ([math]::round($(1000000000 / $divider))) -OptimalPartitionCompute ([math]::round($(1000000000 / $divider)))
+```
+
+4) You can check that everything was applied correctly by doing :
+
+```powershell
+Get-VMGpuPartitionAdapter -VMName $VMName -ErrorAction SilentlyContinue
+```
