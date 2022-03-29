@@ -115,7 +115,7 @@ Do not forget to activate Windows.
 [float]$divider = [math]::round($(100 / $GPUResourceAllocationPercentage), 2)
 
 Set-VMGpuPartitionAdapter -VMName $VMName -MinPartitionVRAM ([math]::round($(1000000000 / $divider))) -MaxPartitionVRAM ([math]::round($(1000000000 / $divider))) -OptimalPartitionVRAM ([math]::round($(1000000000 / $divider)))
-Set-VMGPUPartitionAdapter -VMName $VMName -MinPartitionEncode ([math]::round($(18446744073709551615 / $divider))) -MaxPartitionEncode ([math]::round($(18446744073709551615 / $divider))) -OptimalPartitionEncode ([math]::round($(18446744073709551615 / $divider)))
+Set-VMGpuPartitionAdapter -VMName $VMName -MinPartitionEncode ([math]::round($(18446744073709551615 / $divider))) -MaxPartitionEncode ([math]::round($(18446744073709551615 / $divider))) -OptimalPartitionEncode ([math]::round($(18446744073709551615 / $divider)))
 Set-VMGpuPartitionAdapter -VMName $VMName -MinPartitionDecode ([math]::round($(1000000000 / $divider))) -MaxPartitionDecode ([math]::round($(1000000000 / $divider))) -OptimalPartitionDecode ([math]::round($(1000000000 / $divider)))
 Set-VMGpuPartitionAdapter -VMName $VMName -MinPartitionCompute ([math]::round($(1000000000 / $divider))) -MaxPartitionCompute ([math]::round($(1000000000 / $divider))) -OptimalPartitionCompute ([math]::round($(1000000000 / $divider)))
 ```
@@ -124,4 +124,15 @@ Set-VMGpuPartitionAdapter -VMName $VMName -MinPartitionCompute ([math]::round($(
 
 ```powershell
 Get-VMGpuPartitionAdapter -VMName $VMName -ErrorAction SilentlyContinue
+```
+
+## After GPU Drivers Update
+
+1) Shutdown the VM (and reboot the PC if it was not after drivers install)
+2) Open a PowerShell console as Administrator
+3) Run the following command:
+
+```powershell
+cd Easy-GPU-PV
+./Update-VMGpuPartitionDriver.ps1 -VMName "MercuryVM" -GPUName "AUTO"
 ```

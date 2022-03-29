@@ -56,6 +56,7 @@ This does not matter for macOS / Linux.
 ### Misc
 
 - \[WSL] [AutoIt (damien.autoit)](https://marketplace.visualstudio.com/items?itemName=Damien.autoit)
+- [Rainbow CSV (mechatroner.rainbow-csv)](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv)
 - [DotENV (mikestead.dotenv)](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv)
 - \[WSL] [gettext (mrorz.language-gettext)](https://marketplace.visualstudio.com/items?itemName=mrorz.language-gettext)
 - [Log File Highlighter (emilast.logfilehighlighter)](https://marketplace.visualstudio.com/items?itemName=emilast.LogFileHighlighter)
@@ -83,6 +84,7 @@ This does not matter for macOS / Linux.
     "eslint.packageManager": "yarn",
     "explorer.confirmDragAndDrop": false,
     "files.autoSave": "onFocusChange",
+    "files.trimTrailingWhitespace": true,
     "git.allowForcePush": true,
     "git.allowNoVerifyCommit": true,
     "git.autofetch": true,
@@ -114,6 +116,9 @@ This does not matter for macOS / Linux.
     "typescript.tsserver.maxTsServerMemory": 6144,
     "typescript.updateImportsOnFileMove.enabled": "always",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.colorCustomizations": {
+        "editorWhitespace.foreground": "#ffffff10"
+    },
     "workbench.colorTheme": "Material Theme Darker High Contrast",
     "workbench.iconTheme": "material-icon-theme",
     "workbench.tree.indent": 14,
