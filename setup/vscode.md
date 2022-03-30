@@ -84,6 +84,9 @@ This does not matter for macOS / Linux.
     "eslint.packageManager": "yarn",
     "explorer.confirmDragAndDrop": false,
     "files.autoSave": "onFocusChange",
+    "files.exclude": {
+        "**/*.meta": true
+    },
     "files.trimTrailingWhitespace": true,
     "git.allowForcePush": true,
     "git.allowNoVerifyCommit": true,
@@ -109,6 +112,9 @@ This does not matter for macOS / Linux.
     "npm.packageManager": "yarn",
     "python.languageServer": "Pylance",
     "redhat.telemetry.enabled": false,
+    "search.exclude": {
+        "**/*.meta": true
+    },
     "security.workspace.trust.untrustedFiles": "open",
     "telemetry.telemetryLevel": "off",
     "typescript.locale": "en",
