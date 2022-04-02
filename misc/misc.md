@@ -73,6 +73,10 @@ It will then ask for a password before creating the certificate.
 ### Generate
 
 ```bash
+# Modern system
+ssh-keygen -t ed25519 -C "comment, usually mail address" -f "filename, usually username-Platform"
+
+# Legacy system
 ssh-keygen -t rsa -b 4096 -C "comment, usually mail address" -f "filename, usually username-Platform"
 ```
 
