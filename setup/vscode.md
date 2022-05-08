@@ -75,6 +75,7 @@ This does not matter for macOS / Linux.
 
 ```json
 {
+    "csharp.referencesCodeLens.enabled": false,
     "diffEditor.renderSideBySide": true,
     "editor.fontSize": 14,
     "editor.renderWhitespace": "boundary",
@@ -83,6 +84,10 @@ This does not matter for macOS / Linux.
     "editor.unicodeHighlight.nonBasicASCII": false,
     "eslint.packageManager": "yarn",
     "explorer.confirmDragAndDrop": false,
+    "files.associations": {
+        "*.asset": "yaml",
+        "*.unity": "yaml"
+    },
     "files.autoSave": "onFocusChange",
     "files.exclude": {
         "**/*.meta": true
