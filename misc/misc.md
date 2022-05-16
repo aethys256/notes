@@ -17,6 +17,15 @@ cd /var/app/current/
 
 ## Docker
 
+### Get default Git, NodeJS, NPM and Yarn versions on Node image
+
+```bash
+docker run -it node:16 /bin/bash
+node --version
+npm --version
+yarn --version
+```
+
 ### Clean
 
 ```bash
