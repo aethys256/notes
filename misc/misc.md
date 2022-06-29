@@ -175,7 +175,7 @@ exiftool -api largefilesupport=1 -tagsFromFile "source.mov" -all:all "destinatio
 
 ```csv
 ColumnsCount;17
-Column0;General;0;CompleteName;100
+Column0;General;0;CompleteName;80
 Column1;General;0;Format;10
 Column2;Video;0;Format/String;10
 Column3;Audio;0;Format/String;10
