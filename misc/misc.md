@@ -168,3 +168,28 @@ ffmpeg -i "monoscopic_video.mp4" -c:v libx264 -crf 21 -maxrate 10M -bufsize 15M 
 ```bash
 exiftool -api largefilesupport=1 -tagsFromFile "source.mov" -all:all "destination.mp4"
 ```
+
+### MediaInfo
+
+## Sheet Template
+
+```csv
+ColumnsCount;17
+Column0;General;0;CompleteName;100
+Column1;General;0;Format;10
+Column2;Video;0;Format/String;10
+Column3;Audio;0;Format/String;10
+Column4;Text;0;Format/String;10
+Column5;General;0;FileSize/String;10
+Column6;General;0;Duration/String3;10
+Column7;Video;0;BitRate_Mode/String;10
+Column8;Video;0;BitRate/String;10
+Column9;Audio;0;BitRate_Mode/String;10
+Column10;Audio;0;BitRate/String;10
+Column11;Video;0;FrameRate_Mode/String;10
+Column12;Video;0;Width/String;10
+Column13;Video;0;Height/String;10
+Column14;Audio;0;SamplingRate/String;10
+Column15;Audio;0;BitDepth/String;10
+Column16;Audio;0;Channel(s)/String;10
+```
