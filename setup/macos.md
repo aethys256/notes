@@ -35,17 +35,20 @@ sudo xcode-select --switch /Library/Developer/CommandLineTools
 ### Install brew + cask & cask versions
 
 ```bash
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
 
 ```bash
+
 brew doctor
 ```
 
 ```bash
 brew tap homebrew/cask
 brew tap homebrew/cask-versions
-brew update && brew upgrade && brew cask upgrade && brew cleanup
+brew update && brew upgrade && brew upgrade --cask && brew cleanup
 brew --version
 ```
 
@@ -54,41 +57,40 @@ brew --version
 ```bash
 # Basics
 brew install git git-flow git-lfs gnupg openssl zlib sqlite
+git lfs install
 
-# Node - NVM
-brew install nvm
-mkdir ~/.nvm
+# Node - nodenv
+brew install nodenv
+echo 'eval "$(nodenv init -)"' >> ~/.zprofile
 
-# Ruby - RVM
-\curl -sSL https://rvm.io/mpapis.asc | gpg --import -
-\curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -
-\curl -sSL https://get.rvm.io | bash -s stable --ruby
+# Ruby - rbenv
+brew install rbenv ruby-build
+echo 'eval "$(rbenv init - zsh)"' >> ~/.zprofile
 
 # Python - PyEnv
 brew install pyenv
+cat << 'EOF' >> ~/.zprofile
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+EOF
 
-# PHP (Only used as interpreter in the IDE)
-brew install php
+# .NET Core SDK + Mono
+brew install --cask dotnet-sdk
 
 ## Requires password
 # Java
-brew cask install java
+brew install openjdk
+
+# Rust
+curl -fsSL --tlsv1.2 --proto '=https' https://sh.rustup.rs | sh
 ```
 
 ```bash
-# Setup the initial .profile
-# We use .profile as only dotfile, see: https://superuser.com/a/789465
-rm ~/.bash_profile; rm ~/.bashrc; rm ~/.mkshrc; rm ~/.profile; rm ~/.zlogin; rm ~/.zshrc;
-
 # Note the quotes around the first EOF to avoid variable expansion :)
-# Also, we double check if we already exported to the path using:
-# case ":$PATH:" in
-#   *:"THE_PATH_TO_SEARCH":*) PATH_IS_ALREADY_IN ;;
-#   *) PATH_IS_NOT_IN ;;
-# esac
-cat << 'EOF' > ~/.profile
+cat << 'EOF' > ~/.zprofile
 ## Prompt
-export PS1="\[\033[35m\]\t\[\033[m\]-\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+export PS1="%F{005}%*%f-%F{006}%n%f@%F{002}%m:%f%F{014}%~%k$ "
 
 ## LANG
 export LANG="en_US.UTF-8"
@@ -105,76 +107,47 @@ grep -slR "PRIVATE" ~/.ssh | xargs ssh-add &> /dev/null
 alias ostree="open /Applications/SourceTree.app"
 
 ## Homebrew
-# Add to the PATH: "$(brew --prefix)/sbin"
-case ":$PATH:" in
-  *:"$(brew --prefix)/sbin":*) ;;
-  *) export PATH="$(brew --prefix)/sbin:${PATH}" ;;
-esac
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
-## Local binaries
-case ":$PATH:" in
-  *:"~/.local/bin":*) ;;
-  *) export PATH="~/.local/bin:${PATH}" ;;
-esac
-
-## Compilation flags (mostly for PyEnv)
-export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
-export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
-export LDFLAGS="${LDFLAGS} -L/usr/local/opt/sqlite/lib"
-export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/sqlite/include"
-export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/zlib/lib/pkgconfig"
-export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/sqlite/lib/pkgconfig"
-
-## GitHub
+## Authentication Tokens (GitHub + NPM)
 export GH_TOKEN="XXXXXXXX"
+export NPM_TOKEN_AETHYS="XXXXXXXX"
+export NPM_TOKEN_CTA="XXXXXXXX"
+export NPM_TOKEN="$NPM_TOKEN_CTA"
+USE_NPM_TOKEN_AETHYS () {
+    export NPM_TOKEN="$NPM_TOKEN_AETHYS"
+}
+USE_NPM_TOKEN_CTA () {
+    export NPM_TOKEN="$NPM_TOKEN_CTA"
+}
+
+## Python (PyEnv)
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+alias pyenv-stable-list="pyenv install --list | sed 's/^  //' | grep '^\d' | grep --invert-match 'dev\|a\|b\|rc'"
+alias pyenv-stable-latest="pyenv-stable-list | tail -1"
+alias pyenv-stable-previous="pyenv-stable-list | tail -2 | head -1"
+
+## NodeJS (nodenv)
+eval "$(nodenv init -)"
+alias nodenv-stable-list="nodenv install --list | grep -v '\-\|nightly\|dev\|next\|a\|b\|rc' | awk '{\$1=\$1};1' | grep '^16.'"
+alias nodenv-stable-latest="nodenv-stable-list | tail -1"
+alias nodenv-stable-previous="nodenv-stable-list | tail -2 | head -1"
+
+## Ruby (pyenv)
+eval "$(rbenv init -)"
+alias rbenv-stable-list="rbenv install --list-all | grep -v '\-\|nightly\|dev\|next\|a\|b\|rc' | awk '{\$1=\$1};1' | grep '^3.1'"
+alias rbenv-stable-latest="rbenv-stable-list | tail -1"
+alias rbenv-stable-previous="rbenv-stable-list | tail -2 | head -1"
 
 ## Java
 export JAVA_HOME=`/usr/libexec/java_home`
 
 ## Android
 export ANDROID_HOME="${HOME}/Library/Android/sdk"
-case ":$PATH:" in
-  *:"${ANDROID_HOME}/tools":*) ;;
-  *) export PATH="${PATH}:${ANDROID_HOME}/tools" ;;
-esac
-case ":$PATH:" in
-  *:"${ANDROID_HOME}/platform-tools":*) ;;
-  *) export PATH="${PATH}:${ANDROID_HOME}/platform-tools" ;;
-esac
-
-## QT
-case ":$PATH:" in
-  *:"/usr/local/opt/qt/bin":*) ;;
-  *) export PATH="${PATH}:/usr/local/opt/qt/bin" ;;
-esac
-
-## Python (PyEnv)
-# Add to the PATH: "${HOME}/.pyenv/shims"
-case ":$PATH:" in
-  *:"${HOME}/.pyenv/shims":*) ;;
-  *) eval "$(pyenv init -)" ;;
-esac
-alias pyenv-stable-list="pyenv install --list | sed 's/^  //' | grep '^\d' | grep --invert-match 'dev\|a\|b\|rc'"
-alias pyenv-stable-latest="pyenv-stable-list | tail -1"
-alias pyenv-stable-previous="pyenv-stable-list | tail -2 | head -1"
-
-## NodeJS
-# npm Auth Token
-export NPM_TOKEN="XXXXXXXX"
-# nvm
-export NVM_DIR="${HOME}/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
-export NVM_VERSION_CURRENT_NODE=$(nvm version node)
-export NVM_VERSION_CURRENT_LTS=$(nvm version lts/*)
-
-## Ruby (RVM)
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-case ":$PATH:" in
-  *:"${HOME}/.rvm/bin":*) ;;
-  *) export PATH="${HOME}/.rvm/bin:${PATH}" ;;
-esac
-# Load RVM into a shell session *as a function*
-[[ -s "${HOME}/.rvm/scripts/rvm" ]] && source "${HOME}/.rvm/scripts/rvm"
+export PATH="${PATH}:${ANDROID_HOME}/tools"
+export PATH="${PATH}:${ANDROID_HOME}/platform-tools"
 EOF
 
 cat << 'EOF' > ~/.npmrc
@@ -188,23 +161,40 @@ It's time for a `reboot` to be safe.
 ### Upgrade Ruby & Node LTS & Tools
 
 ```bash
-# Install Node & Node LTS & Yarn
-nvm install node && nvm use node && npm update -g
-nvm install --lts && nvm use lts/* && npm update -g && nvm alias default lts/*
-nvm list && echo "nvm: $(nvm --version)" && echo "node: $(node --version)" && echo "npm: $(npm --version)"
-brew install yarn # Yarn (Node package manager)
+# Node
+git clone https://github.com/nodenv/nodenv-update.git "$(nodenv root)/plugins/nodenv-update"
+git clone https://github.com/nodenv/nodenv-package-json-engine.git "$(nodenv root)/plugins/nodenv-package-json-engine"
+git clone https://github.com/nodenv/nodenv-aliases.git "$(nodenv root)/plugins/nodenv-aliases"
+git clone https://github.com/nodenv/nodenv-each.git "$(nodenv root)/plugins/nodenv-each"
+git clone https://github.com/nodenv/nodenv-package-rehash.git "$(nodenv root)/plugins/nodenv-package-rehash"
+git clone https://github.com/nodenv/nodenv-npm-migrate.git "$(nodenv root)/plugins/nodenv-npm-migrate"
+nodenv install $(nodenv-stable-latest)
+nodenv global $(nodenv-stable-latest)
+nodenv rehash
+npm install --global npm@latest
+nodenv rehash
+npm install --global yarn
+nodenv rehash
+printf "nodenv versions:\n" && nodenv versions && printf "\nnodenv --version: $(nodenv --version)\n" && printf "node --version: $(node --version)\n" && printf "npm --version: $(npm --version)\n" && printf "yarn --version: $(yarn --version)\n"
 
-# Upgrade RVM and Ruby
-rvm get master && rvm reload && yes | rvm upgrade default && rvm use default && gem update
-rvm list && rvm --version && ruby --version && bundler --version
+# Ruby
+git clone https://github.com/rbenv/rbenv-each.git "$(rbenv root)/plugins/rbenv-each"
+git clone https://github.com/tpope/rbenv-aliases.git "$(rbenv root)/plugins/rbenv-aliases"
+rbenv install $(rbenv-stable-latest)
+rbenv global $(rbenv-stable-latest)
+rbenv rehash
+gem update --system
+rbenv rehash
+printf "rbenv versions:\n" && rbenv versions && printf "\nrbenv --version: $(rbenv --version)\n" && printf "ruby --version: $(ruby --version)\n" && printf "gem --version: $(gem --version)\n"
 
-# Install latest Python & Pip.
-yes n | env PYTHON_CONFIGURE_OPTS="--enable-framework CC=clang" pyenv install $(pyenv-stable-latest)
+# Python & Pip
+git clone https://github.com/pyenv/pyenv-pip-migrate.git "$(pyenv root)/plugins/pyenv-pip-migrate"
+pyenv install $(pyenv-stable-latest)
 pyenv global $(pyenv-stable-latest)
 pyenv rehash
 pip install --upgrade pip
 pyenv rehash
-pyenv versions && pyenv --version && python --version && pip --version
+printf "pyenv versions:\n" && pyenv versions && printf "\npyenv --version: $(pyenv --version)\n" && printf "python --version: $(python --version)\n" && printf "pip --version: $(pip --version)\n"
 
 # Install Python dependencies
 pip install bitarray pefile requests fixedint # simc/casc_extract & simc/dbc_extract
@@ -213,52 +203,14 @@ pip install setuptools # hero-rotation-generator
 pip install pylint # linter used by IDEs
 
 # Others
-brew install mongo mysql@5.7 postgresql@11 # This is only for the CLI (use Docker)
-brew link mysql@5.7 --force
-brew link postgresql@11 --force
+brew install mongo postgresql # This is only for the CLI (use Docker)
 brew install libpng # 3rd party post-process lib (like webpack image loaders/plugins)
 brew install graphicsmagick # Image resizing
-brew install awscli awsebcli # AWS CLI & AWS ElasticBeanstalk CLI
-brew install heroku/brew/heroku # Heroku CLI
+brew install ffmpeg # Video conversion
+brew install awscli # AWS CLI
 brew install gradle # Mostly for Android stuff
-brew install composer # Composer (PHP package manager)
 brew install gpsbabel # GPSBabel (GPS utility)
 brew install qt clang-format # QT & ClangFormat (mostly for SimC)
-brew install watchman # Needed by Prisma GraphQL Extension for VSCode
-```
-
-### Essential casks
-
-```bash
-### Essentials ###
-brew cask install google-chrome firefox # Browsers
-brew cask install keepassxc # Password manager
-brew cask install visual-studio-code jetbrains-toolbox # IDEs
-brew cask install sourcetree # Git GUI client
-brew cask install postman # ADE
-brew cask install pgadmin4 # PostgreSQL management
-brew cask install cyberduck # File transfer
-brew cask install slack skype # Messaging
-brew cask install vlc # Multimedia player
-brew cask install the-unarchiver # Archive utility
-brew cask install onyx # System utility
-brew cask install symboliclinker # Symbolic link in context menu
-brew cask install spectacle # Window management app
-brew cask install scroll-reverser # Reverse mouse while keeping natural for trackpad
-
-## Requires password
-brew cask install adobe-air flash-npapi flash-ppapi # Adobe Air & Flash Player NPAPI (Safari & Firefox) & Flash Player PPAPI (Chromium & Opera)
-brew cask install teamviewer chrome-remote-desktop-host # Screen sharing
-
-
-### Others ###
-brew cask install google-backup-and-sync cryptomator # File synchronization
-brew cask install transmission # Torrent file transfer
-```
-
-### Video
-```bash
-brew install ffmpeg
 ```
 
 ### Markdown
@@ -275,34 +227,60 @@ sudo tlmgr install collection-fontsrecommended
 
 ### Manually
 
-- [Audacity](https://www.audacityteam.org/download/mac/)
-- [Battle.net](https://www.blizzard.com/en-us/apps/battle.net/desktop)
-- [Discord](https://discordapp.com/download)
+#### Development
+
+- [Cyberduck](https://cyberduck.io/download/)
+- [DB Browser for SQLite](https://sqlitebrowser.org/dl/)
 - [Docker](https://download.docker.com/mac/stable/Docker.dmg)
 - [FileZilla](https://filezilla-project.org/download.php?platform=osx)
-- [League of Legends](https://signup.euw.leagueoflegends.com/en/signup/redownload)
-- [Logitech Gaming Software](https://support.logi.com/hc/en-001/articles/360025298053-Logitech-Gaming-Software)
-- [Microsoft Office](https://www.office.com/apps) + [Microsoft Teams](https://teams.microsoft.com/downloads)
+- [Java](https://www.java.com/en/download/)
 - [MongoDB Compass Comunity Edition](https://www.mongodb.com/download-center/compass)
-- [OBS](https://obsproject.com/download)
-- [Skyfonts](https://www.monotype.com/products/skyfonts)
-- [Spotify](https://www.spotify.com/us/download/mac)
-- [Teamspeak](https://teamspeak.com/en/downloads/)
-- [Twitch](https://www.twitch.tv/downloads/videos/all)
+- [pgAdmin](https://www.pgadmin.org/download/pgadmin-4-macos/)
+- [Postman](https://www.postman.com/downloads/)
+- [Sourcetree](https://www.sourcetreeapp.com/)
 - [Unity Hub](https://unity3d.com/get-unity/download) + [.NET Core](https://dotnet.microsoft.com/download) + [Mono](https://www.mono-project.com/download/stable/) (Stable channel for VSCode)
 
-### Hackintosh only
+#### Productivity
 
-```bash
-brew cask install clover-configurator # EFI Bootloader configurator
-```
+- [Google Chrome](https://www.google.com/chrome/)
+- [Google Chrome Remote Desktop](https://remotedesktop.google.com/)
+- [Google Drive](https://www.google.com/drive/download/)
+- [KeepassXC](https://keepassxc.org/download/)
+- [Microsoft Office](https://www.office.com/apps)
+- [Microsoft OneDrive](https://www.microsoft.com/en-us/microsoft-365/onedrive/download)
 
-### Others
 
-```bash
-brew cask install istat-menus # Hardware monitoring, free alternative: yujitach-menumeters
-brew cask install db-browser-for-sqlite # Popular browser for SQLite
+#### Communication
 
-## Requires password
-brew cask install xquartz inkscape # Vector image edition
-```
+- [Discord](https://discordapp.com/download)
+- [Microsoft Teams](https://teams.microsoft.com/downloads)
+- [Slack](https://slack.com/downloads/mac)
+- [Telegram](https://desktop.telegram.org/)
+- [WhatsApp](https://www.whatsapp.com/download/)
+
+#### Audio / Image / Video
+
+- [Adobe Creative Cloud](https://creativecloud.adobe.com/en/apps/download/creative-cloud)
+- [Audacity](https://www.audacityteam.org/download/mac/)
+- [Inkscape](https://inkscape.org/release/)
+- [NDI Tools](https://www.ndi.tv/tools/#download-tools)
+- [OBS](https://obsproject.com/download)
+- [Spotify](https://www.spotify.com/us/download/mac)
+- [VLC](https://www.videolan.org/vlc/)
+
+#### Utils
+
+- [Corsair iCue](https://www.corsair.com/us/en/icue-mac)
+- [iStat Menus](https://beta.bjango.com/mac/istatmenus/)
+- [Logitech G Hub](https://www.logitechg.com/en-au/innovation/g-hub.html)
+- [NordVPN](https://nordvpn.com/download/)
+- [Onyx](https://www.titanium-software.fr/en/onyx.html)
+- [Scroll Reverser](https://pilotmoon.com/scrollreverser/)
+- [Spectacle](https://www.spectacleapp.com/)
+- [The Unarchiver](https://theunarchiver.com/)
+
+#### Others
+
+- [Battle.net](https://www.blizzard.com/en-us/apps/battle.net/desktop)
+- [League of Legends](https://signup.euw.leagueoflegends.com/en/signup/redownload)
+- [Transmission](https://transmissionbt.com/download/)

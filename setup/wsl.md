@@ -208,7 +208,7 @@ exec $SHELL
 ## Install Node + Ruby + Python + Java
 
 ```bash
-# nodenv plugins + Node
+# Node
 git clone https://github.com/nodenv/nodenv-update.git "$(nodenv root)/plugins/nodenv-update"
 git clone https://github.com/nodenv/nodenv-package-json-engine.git "$(nodenv root)/plugins/nodenv-package-json-engine"
 git clone https://github.com/nodenv/nodenv-aliases.git "$(nodenv root)/plugins/nodenv-aliases"

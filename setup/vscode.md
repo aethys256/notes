@@ -15,10 +15,11 @@ This does not matter for macOS / Linux.
 - [Material Theme (equinusocio.vsc-material-theme)](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme) (Uninstall [Community Material Theme (equinusocio.vsc-community-material-theme)](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-community-material-theme) & [Material Theme Icons (equinusocio.vsc-material-theme-icons)](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme-icons) that are installed as Pack)
 - [Remote Development (ms-vscode-remote.vscode-remote-extensionpack)](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
 - \[WSL] [Terminals Manager (fabiospampinato.vscode-terminals)](https://marketplace.visualstudio.com/items?itemName=fabiospampinato.vscode-terminals)
+- [TODO Highlight (wayou.vscode-todo-highlight)](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight)
 
 ### C/C++
 
-- \[WSL] [C/C++ (ms-vscode.cpptools)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
+- \[WSL] [C/C++ Extension Pack (ms-vscode.cpptools-extension-pack)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack)
 
 ### C Sharp
 
@@ -32,8 +33,7 @@ This does not matter for macOS / Linux.
 
 - \[WSL] [ESLint (dbaeumer.vscode-eslint)](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - \[WSL] [Prettier - Code formatter (esbenp.prettier-vscode)](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-- \[WSL] [vscode-styled-components (jpoissonnier.vscode-styled-components)](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components)
-- \[WSL] [Debugger for Chrome (msjsdiag.debugger-for-chrome)](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
+- \[WSL] [vscode-styled-components (styled-components.vscode-styled-components)](https://marketplace.visualstudio.com/items?itemName=styled-components.vscode-styled-components)
 
 ### Lua
 
@@ -51,15 +51,22 @@ This does not matter for macOS / Linux.
 
 ### Rust
 
-- \[WSL] [Rust (rls) (rust-lang.rust)](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust)
+- \[WSL] [rust-analyzer (rust-lang.rust-analyzer)](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+
+### SQL
+
+- \[WSL] [SQLTools (mtxr.sqltools)](https://marketplace.visualstudio.com/items?itemName=mtxr.sqltools)
+- \[WSL] [SQLTools PostgreSQL/Cockroach/Redshift Driver (mtxr.sqltools-driver-pg)](https://marketplace.visualstudio.com/items?itemName=mtxr.sqltools-driver-pg)
+- \[WSL] [SQLTools SQLite (mtxr.sqltools-driver-sqlite)](https://marketplace.visualstudio.com/items?itemName=mtxr.sqltools-driver-sqlite)
 
 ### Misc
 
 - \[WSL] [AutoIt (damien.autoit)](https://marketplace.visualstudio.com/items?itemName=Damien.autoit)
-- [Rainbow CSV (mechatroner.rainbow-csv)](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv)
+- \[WSL] [Rainbow CSV (mechatroner.rainbow-csv)](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv)
 - [DotENV (mikestead.dotenv)](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv)
 - \[WSL] [gettext (mrorz.language-gettext)](https://marketplace.visualstudio.com/items?itemName=mrorz.language-gettext)
 - [Log File Highlighter (emilast.logfilehighlighter)](https://marketplace.visualstudio.com/items?itemName=emilast.LogFileHighlighter)
+- [Markdown All in One (yzhang.markdown-all-in-one)](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
 - \[WSL] [markdownlint (davidanson.vscode-markdownlint)](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
 - [SimulationCraft (mystler.simulationcraft)](https://marketplace.visualstudio.com/items?itemName=Mystler.simulationcraft)
 - \[WSL] [Visual Studio IntelliCode (visualstudioexptteam.vscodeintellicode)](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
@@ -75,9 +82,11 @@ This does not matter for macOS / Linux.
 
 ```json
 {
+  "autoit.enableDiagnostics": false,
   "csharp.referencesCodeLens.enabled": false,
   "diffEditor.renderSideBySide": true,
   "editor.fontSize": 14,
+  "editor.linkedEditing": true,
   "editor.renderWhitespace": "boundary",
   "editor.semanticHighlighting.enabled": true,
   "editor.suggestSelection": "first",
@@ -89,9 +98,6 @@ This does not matter for macOS / Linux.
     "*.unity": "yaml"
   },
   "files.autoSave": "onFocusChange",
-  "files.exclude": {
-    "**/*.meta": true
-  },
   "files.trimTrailingWhitespace": true,
   "git.allowForcePush": true,
   "git.allowNoVerifyCommit": true,
@@ -116,12 +122,10 @@ This does not matter for macOS / Linux.
   "Lua.workspace.preloadFileSize": 10000,
   "material-icon-theme.activeIconPack": "react_redux",
   "npm.packageManager": "yarn",
+  "omnisharp.enableRoslynAnalyzers": true,
   "omnisharp.useModernNet": false,
+  "omnisharp.organizeImportsOnFormat": true,
   "python.languageServer": "Pylance",
-  "redhat.telemetry.enabled": false,
-  "search.exclude": {
-    "**/*.meta": true
-  },
   "security.workspace.trust.untrustedFiles": "open",
   "telemetry.telemetryLevel": "off",
   "typescript.locale": "en",
@@ -154,6 +158,9 @@ This does not matter for macOS / Linux.
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[markdown]": {

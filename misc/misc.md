@@ -1,20 +1,5 @@
 # Miscellaneous
 
-## AWS
-
-### ElasticBeanstalk: Use 'npm run ...' during SSH session
-
-```bash
-sudo su
-export PATH=$PATH:`ls -vdr /opt/elasticbeanstalk/node-install/node-* | head -1`/bin
-/opt/elasticbeanstalk/bin/get-config environment | python -c "import json,sys; obj=json.load(sys.stdin); f = open('/tmp/eb_env', 'w'); f.write('\n'.join(map(lambda x: 'export ' + x[0] + '=' + x[1], obj.iteritems())))"
-source /tmp/eb_env
-rm -f /tmp/eb_env
-cd /var/app/current/
-
-# npm run ...
-```
-
 ## Docker
 
 ### Get default Git, NodeJS, NPM and Yarn versions on Node image
@@ -33,14 +18,6 @@ docker-compose down # Stop the container(s)
 docker rm -f $(docker ps -a -q) # Delete all containers
 docker volume rm $(docker volume ls -q) # Delete all volumes
 docker-compose up # Restart the containers
-```
-
-## Heroku
-
-### Login / Swap user
-
-```bash
-heroku login
 ```
 
 ## Apache Bench
@@ -93,6 +70,17 @@ ssh-keygen -t rsa -b 4096 -C "comment, usually mail address" -f "filename, usual
 
 ```bash
 ssh-add ~/.ssh/PRIVATE-KEY-FILE &> /dev/null
+```
+
+### Config
+
+~/.ssh/config:
+
+```text
+Host github.com
+	HostName github.com
+	User git
+	IdentityFile ~/.ssh/aethys256-GitHub
 ```
 
 ## PostgreSQL
