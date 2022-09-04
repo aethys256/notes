@@ -88,9 +88,9 @@ curl -fsSL --tlsv1.2 --proto '=https' https://sh.rustup.rs | sh
 
 ```bash
 # Note the quotes around the first EOF to avoid variable expansion :)
-cat << 'EOF' > ~/.zprofile
+cat << 'EOF' > ~/.zshrc
 ## Prompt
-export PS1="%F{005}%*%f-%F{006}%n%f@%F{002}%m:%f%F{014}%~%k$ "
+export PS1="%F{magenta}%*%f %F{blue}%n%f@%F{green}%m%f %F{yellow}%~%k%f $ "
 
 ## LANG
 export LANG="en_US.UTF-8"
@@ -277,6 +277,7 @@ sudo tlmgr install collection-fontsrecommended
 - [Onyx](https://www.titanium-software.fr/en/onyx.html)
 - [Scroll Reverser](https://pilotmoon.com/scrollreverser/)
 - [Spectacle](https://www.spectacleapp.com/)
+- [SteerMouse](https://plentycom.jp/en/steermouse/download.php)
 - [The Unarchiver](https://theunarchiver.com/)
 
 #### Others

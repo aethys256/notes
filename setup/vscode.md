@@ -32,8 +32,10 @@ This does not matter for macOS / Linux.
 ### JavaScript / TypeScript
 
 - \[WSL] [ESLint (dbaeumer.vscode-eslint)](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- \[WSL] [Package Json Upgrade (codeandstuff.package-json-upgrade)](https://marketplace.visualstudio.com/items?itemName=codeandstuff.package-json-upgrade)
 - \[WSL] [Prettier - Code formatter (esbenp.prettier-vscode)](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 - \[WSL] [vscode-styled-components (styled-components.vscode-styled-components)](https://marketplace.visualstudio.com/items?itemName=styled-components.vscode-styled-components)
+- \[WSL] [Sort package.json (unional.vscode-sort-package-json)](https://marketplace.visualstudio.com/items?itemName=unional.vscode-sort-package-json)
 
 ### Lua
 
