@@ -162,7 +162,7 @@ exiftool -api largefilesupport=1 -tagsFromFile "source.mov" -all:all "destinatio
 ## Sheet Template
 
 ```csv
-ColumnsCount;17
+ColumnsCount;21
 Column0;General;0;CompleteName;80
 Column1;General;0;Format;10
 Column2;Video;0;Format/String;10
@@ -180,4 +180,8 @@ Column13;Video;0;Height/String;10
 Column14;Audio;0;SamplingRate/String;10
 Column15;Audio;0;BitDepth/String;10
 Column16;Audio;0;Channel(s)/String;10
+Column19;Video;0;ColorSpace;10
+Column17;Video;0;ChromaSubsampling/String;10
+Column20;Video;0;colour_range;10
+Column18;Video;0;BitDepth/String;10
 ```
