@@ -72,13 +72,14 @@ This does not matter for macOS / Linux.
 - \[WSL] [markdownlint (davidanson.vscode-markdownlint)](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
 - [SimulationCraft (mystler.simulationcraft)](https://marketplace.visualstudio.com/items?itemName=Mystler.simulationcraft)
 - \[WSL] [Visual Studio IntelliCode (visualstudioexptteam.vscodeintellicode)](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
-- \[WSL] [YAML (redhat.vscode-yaml)](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
 
 ### DevOps
 
 - \[WSL] [Azure Pipelines (ms-azure-devops.azure-pipelines)](https://marketplace.visualstudio.com/items?itemName=ms-azure-devops.azure-pipelines) (will also install [Azure Account (ms-vscode.azure-account)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account))
-- [Docker (ms-azuretools.vscode-docker)](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
-- [PowerShell (ms-vscode.powershell)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)
+- \[WSL] [Docker (ms-azuretools.vscode-docker)](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
+- \[WSL] [ShellCheck (timonwong.shellcheck)](https://marketplace.visualstudio.com/items?itemName=timonwong.shellcheck)
+- \[WSL] [PowerShell (ms-vscode.powershell)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)
+- \[WSL] [YAML (redhat.vscode-yaml)](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
 
 ## settings.json
 
