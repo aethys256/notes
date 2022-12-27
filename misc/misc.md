@@ -114,6 +114,59 @@ pip freeze | xargs pip uninstall -y
  rebase-last = "!b=\"$(git branch --no-color | cut -c3-)\" ; h=\"$(git rev-parse $b)\" ; echo \"Current branch: $b $h\" ; c=\"$(git rev-parse $b)\" ; echo \"Recreating $b branch with initial commit $c ...\" ; git checkout --orphan new-start $c ; git commit -C $c ; git rebase --onto new-start $c $b ; git branch -d new-start ; git gc"
 ```
 
+### History Clean/Rewrite
+
+```bash
+# Clone the repository and fetch everything
+git clone git@my-repo.git my-repo
+git fetch --all
+git pull --all
+git lfs fetch --all
+git lfs pull --all
+
+# Now make a backup of `my-repo`: `my-repo-bak1`
+
+# Export LFS objects to normal objects
+git lfs migrate export --everything --include="*.3dm,*.3ds,*.blend,*.c4d,*.collada,*.dae,*.dxf,*.fbx,*.jas,*.lws,*.lxo,*.ma,*.max,*.mb,*.obj,*.ply,*.skp,*.stl,*.ztl,*.aif,*.aiff,*.it,*.mod,*.mp3,*.ogg,*.s3m,*.wav,*.xm,*.otf,*.ttf,*.bmp,*.exr,*.gif,*.hdr,*.iff,*.jpeg,*.jpg,*.pict,*.png,*.psd,*.tga,*.tif,*.tiff,*.mov,*.mp4,*.webm"
+git lfs prune
+git reflog expire --expire=now --all && git gc --prune=now --aggressive
+
+# Now make a second backup of `my-repo`: `my-repo-bak2`
+
+# Install `git-filter-repo` and use it inside the git repository to analyze what to remove
+python ../git-filter-repo --analyze --force
+
+# Go to `.git\filter-repo\analysis` and define a filtering strategy (you can apply multiple filtering strategies)
+
+# Using regex
+python ../git-filter-repo --force --path-regex '.*\.(webm|tif|mp4|bundle|7z|psd|cache|zip|obj|blend1|blend|hlsl|bin|playable|terrainlayer|guiskin|lighting|overrideController|hash|signal|watermesh|config|CopyComplete|wav|png|tga)$' --invert-paths --prune-empty never --prune-degenerate never
+
+# Using paths
+python ../git-filter-repo --force --path MyDir/ --path MyOtherDir/ --invert-paths --prune-empty never --prune-degenerate never
+
+# Using blobs size
+python ../git-filter-repo --force --strip-blobs-bigger-than 50K --prune-empty never --prune-degenerate never
+
+# It will clear everything including your latest "safe" commit, so you might want to port back what should be kept from your last commit in case you went too far in the cleaning
+# You might need to rebase if you have multiple branches
+
+# Now make a third backup of `my-repo`: `my-repo-bak2`
+
+# Import LFS objects from normal objects
+git lfs migrate import --everything --include="*.3dm,*.3ds,*.blend,*.c4d,*.collada,*.dae,*.dxf,*.fbx,*.jas,*.lws,*.lxo,*.ma,*.max,*.mb,*.obj,*.ply,*.skp,*.stl,*.ztl,*.aif,*.aiff,*.it,*.mod,*.mp3,*.ogg,*.s3m,*.wav,*.xm,*.otf,*.ttf,*.bmp,*.exr,*.gif,*.hdr,*.iff,*.jpeg,*.jpg,*.pict,*.png,*.psd,*.tga,*.tif,*.tiff,*.mov,*.mp4,*.webm"
+
+# Export/Import might have messed your `.gitattributes`, so update it and commit it.
+
+# Clear your local .git from artefacts
+git reflog expire --expire=now --all && git gc --prune=now --aggressive
+
+# Add back the origin you want to push to since `git-filter-repo` might have removed it. KEEP IN MIND THAT FOR GITHUB YOU NEED TO MAKE A NEW REPO TO CLEAN EFFECTIVELY LFS OBJECTS
+git remote add origin git@address.git
+git push --all
+
+# Delete your local directories and backups if not needed anymore.
+```
+
 ## GPSBabel
 
 ### Convert GPX Track to GPX Waypoints
