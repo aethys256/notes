@@ -5,6 +5,8 @@
 Any extension prefixed by \[WSL] is meant to be installed on WSL rather than locally if you are using it.\
 This does not matter for macOS / Linux.
 
+https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl
+
 ### UI
 
 - \[WSL] [Copy Relative Path and Line Numbers (ezforo.copy-relative-path-and-line-numbers)](https://marketplace.visualstudio.com/items?itemName=ezforo.copy-relative-path-and-line-numbers)
@@ -21,9 +23,11 @@ This does not matter for macOS / Linux.
 
 - \[WSL] [C/C++ Extension Pack (ms-vscode.cpptools-extension-pack)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack)
 
-### C Sharp
+### C Sharp / Unity
 
-- \[WSL] [C# (ms-vscode.csharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+- [Unity (VisualStudioToolsForUnity.vstuc)](https://marketplace.visualstudio.com/items?itemName=VisualStudioToolsForUnity.vstuc)
+https://marketplace.visualstudio.com/items?itemName=Fudge.auto-using
+https://marketplace.visualstudio.com/items?itemName=josefpihrt-vscode.roslynator
 
 ### GraphQL
 
@@ -66,7 +70,6 @@ This does not matter for macOS / Linux.
 - \[WSL] [AutoIt (damien.autoit)](https://marketplace.visualstudio.com/items?itemName=Damien.autoit)
 - \[WSL] [Rainbow CSV (mechatroner.rainbow-csv)](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv)
 - [DotENV (mikestead.dotenv)](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv)
-- \[WSL] [gettext (mrorz.language-gettext)](https://marketplace.visualstudio.com/items?itemName=mrorz.language-gettext)
 - [Log File Highlighter (emilast.logfilehighlighter)](https://marketplace.visualstudio.com/items?itemName=emilast.LogFileHighlighter)
 - [Markdown All in One (yzhang.markdown-all-in-one)](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
 - \[WSL] [markdownlint (davidanson.vscode-markdownlint)](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
@@ -98,7 +101,6 @@ This does not matter for macOS / Linux.
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.unicodeHighlight.nonBasicASCII": false,
-  "eslint.packageManager": "yarn",
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "files.associations": {

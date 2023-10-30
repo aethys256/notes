@@ -1,4 +1,4 @@
-# Setup: WSL
+# Setup: Windows WSL
 
 ## Introduction
 
